@@ -1,0 +1,16 @@
+{
+  "id": "mig_ck4t5h4r2951ti1m2itg",
+  "parentID": "mig_ck0al43f4dpqf7fqkbr0",
+  "checksum": "1:6af78377ddc5369f2339a23e30b289bf01104ba9eb6a974796d1e79b448998d1",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "skills",
+          "type": "multiple"
+        },
+        "table": "users"
+      }
+    }
+  ]
+}

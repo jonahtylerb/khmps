@@ -1,0 +1,16 @@
+{
+  "id": "mig_cjtm16juumjmsgo875b0",
+  "parentID": "mig_cjtm10buumjmsgo875a0",
+  "checksum": "1:8175388fd70811681aa06a95e4480beaaa8fa214e87c64af586621b301503b99",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "multiple"
+        },
+        "table": "august"
+      }
+    }
+  ]
+}

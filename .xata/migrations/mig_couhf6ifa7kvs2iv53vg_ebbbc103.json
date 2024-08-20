@@ -1,0 +1,69 @@
+{
+  "id": "mig_couhf6ifa7kvs2iv53vg",
+  "parentID": "mig_cot8o5jqmmd2mnsd1rog",
+  "checksum": "1:ebbbc103aa1717faf51773a8e9336f5b3a7497a8f3c42d01011d9ebf6d80be57",
+  "operations": [
+    {
+      "addTable": {
+        "table": "shop-valid-bricks"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "shop-valid-bricks"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "shop-valid-bricks"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "shop-valid-bricks"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "shop-valid-bricks"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "string"
+        },
+        "table": "shop-valid-bricks"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "sort",
+          "type": "int"
+        },
+        "table": "shop-valid-bricks"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "mig_cjr8madk5jd2mmisho80",
+  "parentID": "mig_cjr8m8gioeqbsfnaafu0",
+  "checksum": "1:71a32c1b00f601af20a7fef3a3cca80dcb440bda09f8a4e1b36072e221934d5a",
+  "operations": [
+    {
+      "renameColumn": {
+        "newName": "adminCode",
+        "oldName": "admin",
+        "table": "users"
+      }
+    }
+  ]
+}

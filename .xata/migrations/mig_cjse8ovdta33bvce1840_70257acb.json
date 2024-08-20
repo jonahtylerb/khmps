@@ -1,0 +1,13 @@
+{
+  "id": "mig_cjse8ovdta33bvce1840",
+  "parentID": "mig_cjsdaneinn9ehhsrngr0",
+  "checksum": "1:70257acbfe61dda15c5360c6a09f587b7955e2129cd3e871069823c723512e54",
+  "operations": [
+    {
+      "renameTable": {
+        "newName": "test",
+        "oldName": "august"
+      }
+    }
+  ]
+}

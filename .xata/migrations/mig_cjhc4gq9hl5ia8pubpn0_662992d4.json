@@ -1,0 +1,16 @@
+{
+  "id": "mig_cjhc4gq9hl5ia8pubpn0",
+  "parentID": "mig_cjhc43g4hpeup3is20f0",
+  "checksum": "1:662992d408ecc15d3b09b001c850a1370f68d9c842aaa93db3447030927c9783",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "datetime"
+        },
+        "table": "august"
+      }
+    }
+  ]
+}

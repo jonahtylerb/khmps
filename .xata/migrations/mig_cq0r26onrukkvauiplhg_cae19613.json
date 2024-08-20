@@ -1,0 +1,69 @@
+{
+  "id": "mig_cq0r26onrukkvauiplhg",
+  "parentID": "mig_cq0qr83ses7pjgp6bdh0",
+  "checksum": "1:cae196135971a979c61b535b6cb03e23ce231bdda0e61e01500679efe8ce2308",
+  "operations": [
+    {
+      "addTable": {
+        "table": "rugs-coasts-urgency"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "rugs-coasts-urgency"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "rugs-coasts-urgency"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "rugs-coasts-urgency"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "rugs-coasts-urgency"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "string"
+        },
+        "table": "rugs-coasts-urgency"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "sort",
+          "type": "int"
+        },
+        "table": "rugs-coasts-urgency"
+      }
+    }
+  ]
+}

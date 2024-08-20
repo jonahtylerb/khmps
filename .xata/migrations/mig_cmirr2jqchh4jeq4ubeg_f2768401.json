@@ -1,0 +1,69 @@
+{
+  "id": "mig_cmirr2jqchh4jeq4ubeg",
+  "parentID": "mig_cmirim0mj350nbjo8ha0",
+  "checksum": "1:f2768401f6220d248c172008834b3e23e93ee1fd61f60399f755e8ad73df7fbc",
+  "operations": [
+    {
+      "addTable": {
+        "table": "plasmas-waltzed-fetching"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "plasmas-waltzed-fetching"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "plasmas-waltzed-fetching"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "plasmas-waltzed-fetching"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "plasmas-waltzed-fetching"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "string"
+        },
+        "table": "plasmas-waltzed-fetching"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "sort",
+          "type": "int"
+        },
+        "table": "plasmas-waltzed-fetching"
+      }
+    }
+  ]
+}

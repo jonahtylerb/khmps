@@ -1,0 +1,69 @@
+{
+  "id": "mig_cq0qr83ses7pjgp6bdh0",
+  "parentID": "mig_cq0qkreuarhff7ukfbt0",
+  "checksum": "1:1de62841686c302ecb1ea894e94392f87837c78abe6a1a7e891eb09d225e2021",
+  "operations": [
+    {
+      "addTable": {
+        "table": "respond-inflatable-scars"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "respond-inflatable-scars"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "respond-inflatable-scars"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "respond-inflatable-scars"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "respond-inflatable-scars"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "string"
+        },
+        "table": "respond-inflatable-scars"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "sort",
+          "type": "int"
+        },
+        "table": "respond-inflatable-scars"
+      }
+    }
+  ]
+}

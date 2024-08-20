@@ -1,0 +1,12 @@
+{
+  "id": "mig_cjehkicma7cltpndn3d0",
+  "parentID": "mig_cjehk64oeqf5phq5vp8g",
+  "checksum": "1:b160e01e12c87e48bab95bfc6a5eefe267d31377fde0100b6f7db375132b9930",
+  "operations": [
+    {
+      "removeTable": {
+        "table": "new-orleans"
+      }
+    }
+  ]
+}

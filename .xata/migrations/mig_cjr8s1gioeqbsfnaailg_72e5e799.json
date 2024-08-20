@@ -1,0 +1,14 @@
+{
+  "id": "mig_cjr8s1gioeqbsfnaailg",
+  "parentID": "mig_cjr8ongioeqbsfnaagu0",
+  "checksum": "1:72e5e7997359dd9f053f08adc0475a9e02685a992c495d889216eda48118af38",
+  "operations": [
+    {
+      "renameColumn": {
+        "newName": "message",
+        "oldName": "description",
+        "table": "august"
+      }
+    }
+  ]
+}

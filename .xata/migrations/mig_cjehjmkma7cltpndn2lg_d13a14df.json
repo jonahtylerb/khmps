@@ -1,0 +1,11 @@
+{
+  "id": "mig_cjehjmkma7cltpndn2lg",
+  "checksum": "1:d13a14dfa1ffefe408df6bb41fe0d8ad5ba166e568798a4336baed75d0928960",
+  "operations": [
+    {
+      "addTable": {
+        "table": "august"
+      }
+    }
+  ]
+}

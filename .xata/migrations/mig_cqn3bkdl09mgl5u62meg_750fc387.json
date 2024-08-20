@@ -1,0 +1,69 @@
+{
+  "id": "mig_cqn3bkdl09mgl5u62meg",
+  "parentID": "mig_cqn3bdtl09mgl5u62mc0",
+  "checksum": "1:750fc387b7671f7c9a4ce29a8fcd50b24cd393a6446e9fd298adc557d1dff8d2",
+  "operations": [
+    {
+      "addTable": {
+        "table": "ap"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "ap"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "ap"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "ap"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "ap"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "string"
+        },
+        "table": "ap"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "sort",
+          "type": "int"
+        },
+        "table": "ap"
+      }
+    }
+  ]
+}

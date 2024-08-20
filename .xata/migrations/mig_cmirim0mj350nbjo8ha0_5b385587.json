@@ -1,0 +1,69 @@
+{
+  "id": "mig_cmirim0mj350nbjo8ha0",
+  "parentID": "mig_ck513l4r2951ti1m38ng",
+  "checksum": "1:5b385587e0d90ffd196d9765835a527faf35bcc1c5c396245881398cdcbfb209",
+  "operations": [
+    {
+      "addTable": {
+        "table": "orchestra-gliding-first"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "orchestra-gliding-first"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "orchestra-gliding-first"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "orchestra-gliding-first"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "orchestra-gliding-first"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "string"
+        },
+        "table": "orchestra-gliding-first"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "sort",
+          "type": "int"
+        },
+        "table": "orchestra-gliding-first"
+      }
+    }
+  ]
+}

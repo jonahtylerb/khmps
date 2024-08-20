@@ -1,0 +1,16 @@
+{
+  "id": "mig_cjehnc4oeqf5phq5vph0",
+  "parentID": "mig_cjehmp46ku5qug2b2phg",
+  "checksum": "1:b87d713e79f81214ba7e53d8fd48db84182b3e738435ac519761eaceba33667e",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "password",
+          "type": "string"
+        },
+        "table": "august"
+      }
+    }
+  ]
+}

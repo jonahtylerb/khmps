@@ -1,0 +1,69 @@
+{
+  "id": "mig_cmjgl5omj350nbjo8nj0",
+  "parentID": "mig_cmirr2jqchh4jeq4ubeg",
+  "checksum": "1:1876d395be69b7389415fbdbf7803c5d3761b3c5d4919e56c7a400a9751f6d36",
+  "operations": [
+    {
+      "addTable": {
+        "table": "squish-rotate-matter"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "squish-rotate-matter"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "squish-rotate-matter"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "squish-rotate-matter"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "squish-rotate-matter"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "string"
+        },
+        "table": "squish-rotate-matter"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "sort",
+          "type": "int"
+        },
+        "table": "squish-rotate-matter"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mig_cjse97fdta33bvce1850",
+  "parentID": "mig_cjse915hb6e376l173jg",
+  "checksum": "1:06f6652edca834ee2a857fd814eb7802ae327860ca7d938f52d96148783ad47b",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "august"
+      }
+    }
+  ]
+}

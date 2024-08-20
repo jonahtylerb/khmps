@@ -1,0 +1,69 @@
+{
+  "id": "mig_cjvnnc5vjn8ikqqgbpl0",
+  "parentID": "mig_cjvnn7dvjn8ikqqgbpjg",
+  "checksum": "1:1427892c5d95a8e00917c87dda98e8da2f87c7734dfb10eb4eb109510180fe42",
+  "operations": [
+    {
+      "addTable": {
+        "table": "TaskCardList"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "TaskCardList"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "TaskCardList"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "TaskCardList"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "TaskCardList"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "string"
+        },
+        "table": "TaskCardList"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "sort",
+          "type": "int"
+        },
+        "table": "TaskCardList"
+      }
+    }
+  ]
+}

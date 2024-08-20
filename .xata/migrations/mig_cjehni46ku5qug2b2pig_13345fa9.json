@@ -1,0 +1,17 @@
+{
+  "id": "mig_cjehni46ku5qug2b2pig",
+  "parentID": "mig_cjehnc4oeqf5phq5vph0",
+  "checksum": "1:13345fa9a43a53543d77bf943f2da4b6977e774c69fbad7a6a5b62b1027624f7",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "admin",
+          "type": "bool",
+          "defaultValue": "false"
+        },
+        "table": "august"
+      }
+    }
+  ]
+}

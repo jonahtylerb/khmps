@@ -1,0 +1,12 @@
+{
+  "id": "mig_ck513d4r2951ti1m38l0",
+  "parentID": "mig_ck4t5h4r2951ti1m2itg",
+  "checksum": "1:81c9d1d4dca76127e5f10cf57246cd25accf8147be261488f225f2aa05b6e5b6",
+  "operations": [
+    {
+      "removeTable": {
+        "table": "TaskCardList"
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "mig_cjgn5v84hpeup3irvl1g",
+  "parentID": "mig_cjgn4ko4hpeup3irvl00",
+  "checksum": "1:ff57fa70c4506c0f4dd122e294f380eb27a07f5e779190ec1a2a8d6650fc465e",
+  "operations": [
+    {
+      "addTable": {
+        "table": "august"
+      }
+    }
+  ]
+}

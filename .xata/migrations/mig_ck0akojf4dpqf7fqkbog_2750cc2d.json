@@ -1,0 +1,12 @@
+{
+  "id": "mig_ck0akojf4dpqf7fqkbog",
+  "parentID": "mig_cjvnnc5vjn8ikqqgbpl0",
+  "checksum": "1:2750cc2d630a43e78392b3bd3346194e481fc5a247998264f095f25056393630",
+  "operations": [
+    {
+      "removeTable": {
+        "table": "august"
+      }
+    }
+  ]
+}

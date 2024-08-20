@@ -1,0 +1,18 @@
+{
+  "id": "mig_cjpngd1vl9d3uhvur43g",
+  "parentID": "mig_cjpng5p28jvdligthe5g",
+  "checksum": "1:f0d31b29983401d91d44655ba8c4566b4802530cdcc238144de561d30279d857",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "admin",
+          "type": "bool",
+          "notNull": true,
+          "defaultValue": "false"
+        },
+        "table": "user"
+      }
+    }
+  ]
+}

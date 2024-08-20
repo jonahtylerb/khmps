@@ -1,0 +1,31 @@
+<script>
+	import { Button, Heading, P } from 'flowbite-svelte';
+</script>
+
+<main class="max-w-90ch space-y-5">
+	<Heading tag="h1" class="mb-10"
+		>Kingdom Hall <span class="decoration-blue-5 decoration-5 underline">Maintenance Program</span> Support</Heading
+	>
+	<P>
+		Welcome! This website was designed to help you track Maintenance Tasks in the Maintenance
+		Program at your Kingdom Hall.
+	</P>
+	<P>
+		After you login, please proceed to the 'Volunteers' tab and add your volunteers. Then proceed to
+		the 'Yearly Schedule' tab and complete your yearly schedule by adding volunteers, you can also
+		change the months by clicking on the squares The program will then send the volunteers their
+		task card assignment and remind them when their task is due. You will then be able to track any
+		completed and overdue tasks. It's that simple!
+	</P>
+	<Heading tag="h2" class="font-regular decoration-orange-5 decoration-3 text-lg underline"
+		>Login to get started!</Heading
+	>
+	<Button href="/login" class="text-md">Login</Button>
+	<footer class="mt-10">
+		<P class="mb-5">
+			If you do not have a login and would like an account, please request access here:
+		</P>
+		<Button href="/register">Register</Button>
+		<Button color="dark" href="mailto:khmpsinfo@gmail.com">Contact</Button>
+	</footer>
+</main>

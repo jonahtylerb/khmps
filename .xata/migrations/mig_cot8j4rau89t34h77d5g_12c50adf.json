@@ -1,0 +1,69 @@
+{
+  "id": "mig_cot8j4rau89t34h77d5g",
+  "parentID": "mig_cojctrdmikfhmakdn4vg",
+  "checksum": "1:12c50adfd916b4492f9977f58e17beb832a7b8ff81d64667f80aa7537c69cff6",
+  "operations": [
+    {
+      "addTable": {
+        "table": "gesture-monitored-lobster"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "gesture-monitored-lobster"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "gesture-monitored-lobster"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "gesture-monitored-lobster"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "gesture-monitored-lobster"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "string"
+        },
+        "table": "gesture-monitored-lobster"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "sort",
+          "type": "int"
+        },
+        "table": "gesture-monitored-lobster"
+      }
+    }
+  ]
+}

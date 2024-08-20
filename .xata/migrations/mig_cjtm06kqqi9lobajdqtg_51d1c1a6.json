@@ -1,0 +1,16 @@
+{
+  "id": "mig_cjtm06kqqi9lobajdqtg",
+  "parentID": "mig_cjse9ovdta33bvce1880",
+  "checksum": "1:51d1c1a6d4ed53e78f3ee45be1546760fe4568d3eb325b25022a8d14aa147fd7",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "cong",
+          "type": "string"
+        },
+        "table": "users"
+      }
+    }
+  ]
+}

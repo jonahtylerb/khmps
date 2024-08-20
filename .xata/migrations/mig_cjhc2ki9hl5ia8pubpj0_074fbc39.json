@@ -1,0 +1,13 @@
+{
+  "id": "mig_cjhc2ki9hl5ia8pubpj0",
+  "parentID": "mig_cjhc2eifgumq3m6j9kn0",
+  "checksum": "1:074fbc39ad50e683bb5475fab24b433c2ba6d0e98054e6b934a58853aa8141b3",
+  "operations": [
+    {
+      "renameTable": {
+        "newName": "kingdomHalls",
+        "oldName": "kingdom_halls"
+      }
+    }
+  ]
+}

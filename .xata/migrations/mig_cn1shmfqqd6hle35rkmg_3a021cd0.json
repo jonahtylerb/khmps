@@ -1,0 +1,69 @@
+{
+  "id": "mig_cn1shmfqqd6hle35rkmg",
+  "parentID": "mig_cmo2m41scf0vpkr71er0",
+  "checksum": "1:3a021cd0317a64f4713ded692ecd30412cb3b27649a27bc5059581529e922137",
+  "operations": [
+    {
+      "addTable": {
+        "table": "framework-shortened-lined"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "framework-shortened-lined"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "framework-shortened-lined"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "framework-shortened-lined"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "framework-shortened-lined"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "string"
+        },
+        "table": "framework-shortened-lined"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "sort",
+          "type": "int"
+        },
+        "table": "framework-shortened-lined"
+      }
+    }
+  ]
+}

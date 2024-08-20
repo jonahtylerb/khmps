@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Jonah-Brupbacher-s-workspace-92gsoo.us-east-1.xata.sh/db/MaintenanceManager",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}

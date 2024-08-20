@@ -1,0 +1,13 @@
+{
+  "id": "mig_cjehoqkoeqf5phq5vpi0",
+  "parentID": "mig_cjehni46ku5qug2b2pig",
+  "checksum": "1:112f54830101621743db4f0490c3f84cf353e70ff4c4ec99a737bc20d036da77",
+  "operations": [
+    {
+      "renameTable": {
+        "newName": "august_users",
+        "oldName": "august"
+      }
+    }
+  ]
+}

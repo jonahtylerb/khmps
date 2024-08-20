@@ -1,0 +1,69 @@
+{
+  "id": "mig_cmo2m41scf0vpkr71er0",
+  "parentID": "mig_cmjgl5omj350nbjo8nj0",
+  "checksum": "1:7a14b2869d75d4721626d9753d88f325d279ee6ce7627e88d08a54f893d23c65",
+  "operations": [
+    {
+      "addTable": {
+        "table": "being-sweeter-cried"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "being-sweeter-cried"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "being-sweeter-cried"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "being-sweeter-cried"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "being-sweeter-cried"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "string"
+        },
+        "table": "being-sweeter-cried"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "sort",
+          "type": "int"
+        },
+        "table": "being-sweeter-cried"
+      }
+    }
+  ]
+}

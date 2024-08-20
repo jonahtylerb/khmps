@@ -1,0 +1,16 @@
+{
+  "id": "mig_cjr8ongioeqbsfnaagu0",
+  "parentID": "mig_cjr8n3gioeqbsfnaaglg",
+  "checksum": "1:c5eff88bc76472476a127e29491d766dc27890d1ef2c440935baa851594b210d",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "adminCode",
+          "type": "string"
+        },
+        "table": "users"
+      }
+    }
+  ]
+}

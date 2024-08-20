@@ -1,0 +1,69 @@
+{
+  "id": "mig_cot8o5jqmmd2mnsd1rog",
+  "parentID": "mig_cot8nvjau89t34h77d6g",
+  "checksum": "1:f6c5473ec31d1130125937fd261f54fb6d213883e219ffbb8a5dc9d9a6274633",
+  "operations": [
+    {
+      "addTable": {
+        "table": "pearl-river"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "pearl-river"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "pearl-river"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "pearl-river"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "pearl-river"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "string"
+        },
+        "table": "pearl-river"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "sort",
+          "type": "int"
+        },
+        "table": "pearl-river"
+      }
+    }
+  ]
+}

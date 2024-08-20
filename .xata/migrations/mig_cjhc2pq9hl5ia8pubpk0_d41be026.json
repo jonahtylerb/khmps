@@ -1,0 +1,13 @@
+{
+  "id": "mig_cjhc2pq9hl5ia8pubpk0",
+  "parentID": "mig_cjhc2ki9hl5ia8pubpj0",
+  "checksum": "1:d41be02678cdc81100b9613a6f3b009ce3f3038722395b5e65af4b216abe29a7",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "kingdomHall",
+        "table": "users"
+      }
+    }
+  ]
+}

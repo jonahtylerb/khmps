@@ -1,0 +1,69 @@
+{
+  "id": "mig_cojctrdmikfhmakdn4vg",
+  "parentID": "mig_cn1shmfqqd6hle35rkmg",
+  "checksum": "1:7e8ee89fafac02d734633211f0490651470a46aed89dfc1484b8591666228b44",
+  "operations": [
+    {
+      "addTable": {
+        "table": "claiborne"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "claiborne"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "claiborne"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "claiborne"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "claiborne"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "string"
+        },
+        "table": "claiborne"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "sort",
+          "type": "int"
+        },
+        "table": "claiborne"
+      }
+    }
+  ]
+}

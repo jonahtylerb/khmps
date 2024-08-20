@@ -1,0 +1,19 @@
+{
+  "id": "mig_cjse9ovdta33bvce1880",
+  "parentID": "mig_cjse9kvdta33bvce1870",
+  "checksum": "1:aa08383487c1470c3a0cd1fdea5fbcfb5ac5df9946fd5557671b533a9a0a1840",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "august"
+      }
+    }
+  ]
+}

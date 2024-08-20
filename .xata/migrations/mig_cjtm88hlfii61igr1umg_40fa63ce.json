@@ -1,0 +1,60 @@
+{
+  "id": "mig_cjtm88hlfii61igr1umg",
+  "parentID": "mig_cjtm22kqqi9lobajdqvg",
+  "checksum": "1:40fa63cef09aa7c59d7d261d2cb3a857984df63bd9f17884c5f91bb289401a11",
+  "operations": [
+    {
+      "addTable": {
+        "table": "TaskCardList"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "TaskCardList"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "TaskCardList"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "TaskCardList"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "TaskCardList"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "bool"
+        },
+        "table": "TaskCardList"
+      }
+    }
+  ]
+}

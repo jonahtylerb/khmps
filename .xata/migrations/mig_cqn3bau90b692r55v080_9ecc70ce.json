@@ -1,0 +1,69 @@
+{
+  "id": "mig_cqn3bau90b692r55v080",
+  "parentID": "mig_cqcqe9f2b91h0qbgji60",
+  "checksum": "1:9ecc70ce4f419412fdd8c324e501f10a7b0eb7a4e88e8f0801405ae8c65023ed",
+  "operations": [
+    {
+      "addTable": {
+        "table": "TaskCardList-TaskCardListcsv"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "ap",
+          "type": "string"
+        },
+        "table": "TaskCardList-TaskCardListcsv"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "TaskCardList-TaskCardListcsv"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "TaskCardList-TaskCardListcsv"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "TaskCardList-TaskCardListcsv"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "string"
+        },
+        "table": "TaskCardList-TaskCardListcsv"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "sort",
+          "type": "int"
+        },
+        "table": "TaskCardList-TaskCardListcsv"
+      }
+    }
+  ]
+}

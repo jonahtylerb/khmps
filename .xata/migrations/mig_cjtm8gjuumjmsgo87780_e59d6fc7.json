@@ -1,0 +1,13 @@
+{
+  "id": "mig_cjtm8gjuumjmsgo87780",
+  "parentID": "mig_cjtm8e3uumjmsgo87770",
+  "checksum": "1:e59d6fc708d1d5ec8c65955f3df4fde544d7f75ed88331a11286402cdb94b914",
+  "operations": [
+    {
+      "renameTable": {
+        "newName": "august",
+        "oldName": "TaskCardList"
+      }
+    }
+  ]
+}

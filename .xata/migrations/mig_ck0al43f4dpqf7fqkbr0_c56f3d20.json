@@ -1,0 +1,69 @@
+{
+  "id": "mig_ck0al43f4dpqf7fqkbr0",
+  "parentID": "mig_ck0akojf4dpqf7fqkbog",
+  "checksum": "1:c56f3d20b51fee4153ad357f7b08ce48913c8cba80e89dda0ce9c1242ad82ba8",
+  "operations": [
+    {
+      "addTable": {
+        "table": "august"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "august"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "august"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "august"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "august"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "string"
+        },
+        "table": "august"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "sort",
+          "type": "int"
+        },
+        "table": "august"
+      }
+    }
+  ]
+}

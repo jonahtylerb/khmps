@@ -1,0 +1,12 @@
+{
+  "id": "mig_cot8nvjau89t34h77d6g",
+  "parentID": "mig_cot8lg3qmmd2mnsd1rn0",
+  "checksum": "1:48027990ca65e41688d112604d3d287e2ca283b239bf29c2e23a817f40b5f611",
+  "operations": [
+    {
+      "removeTable": {
+        "table": "pearl-river"
+      }
+    }
+  ]
+}

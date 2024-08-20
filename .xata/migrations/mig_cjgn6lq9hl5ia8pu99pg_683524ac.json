@@ -1,0 +1,16 @@
+{
+  "id": "mig_cjgn6lq9hl5ia8pu99pg",
+  "parentID": "mig_cjgn6io4hpeup3irvlcg",
+  "checksum": "1:683524ac1a35a9cfdcbdea7ef49d5808c795b783a22232c1bc74f0769f1f4acd",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "desc",
+          "type": "string"
+        },
+        "table": "august"
+      }
+    }
+  ]
+}

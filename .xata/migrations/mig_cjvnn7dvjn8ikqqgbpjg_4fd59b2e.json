@@ -1,0 +1,12 @@
+{
+  "id": "mig_cjvnn7dvjn8ikqqgbpjg",
+  "parentID": "mig_cjvnh7tvjn8ikqqgbp80",
+  "checksum": "1:4fd59b2e2dd805e59992f6e6f3278dd1010cbf885c5112f5ced657626dd91acd",
+  "operations": [
+    {
+      "removeTable": {
+        "table": "TaskCardList"
+      }
+    }
+  ]
+}

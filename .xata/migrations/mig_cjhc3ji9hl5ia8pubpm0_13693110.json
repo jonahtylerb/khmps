@@ -1,0 +1,13 @@
+{
+  "id": "mig_cjhc3ji9hl5ia8pubpm0",
+  "parentID": "mig_cjhc3da9hl5ia8pubpl0",
+  "checksum": "1:136931109d0ae12f70e8a1e06e9e2ea48b4b26b362b56f6c6f2c19a2dcc42497",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "desc",
+        "table": "august"
+      }
+    }
+  ]
+}

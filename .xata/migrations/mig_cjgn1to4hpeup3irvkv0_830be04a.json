@@ -1,0 +1,12 @@
+{
+  "id": "mig_cjgn1to4hpeup3irvkv0",
+  "parentID": "mig_cjehoqkoeqf5phq5vpi0",
+  "checksum": "1:830be04a915f633e0a5fc67638617b66d77bdc105e4a5d82d2b4f299eaeb2211",
+  "operations": [
+    {
+      "addTable": {
+        "table": "kingdom_halls"
+      }
+    }
+  ]
+}
