@@ -21,11 +21,11 @@
 		>Login to get started!</Heading
 	>
 	<Button href="/login" class="text-md">Login</Button>
-	<footer class="mt-10">
+	<section class="mt-10">
 		<P class="mb-5">
 			If you do not have a login and would like an account, please request access here:
 		</P>
-		<Button href="/register">Register</Button>
+		<Button class="mr-2" href="/register">Register</Button>
 		<Button color="dark" href="mailto:khmpsinfo@gmail.com">Contact</Button>
-	</footer>
+	</section>
 </main>

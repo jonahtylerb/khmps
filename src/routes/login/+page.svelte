@@ -8,6 +8,7 @@
 	<Card class="w-md max-w-full">
 		<form method="POST" action="?/login" class="space-y-5">
 			<Heading tag="h1" class="text-center text-2xl">Login</Heading>
+			<Alert>Hello?</Alert>
 			{#if form?.missing}
 				<Alert class="error"
 					><span class="i-tabler-alert-triangle text-xl">.</span> The email and password field is required</Alert

@@ -4,13 +4,13 @@ import { xata } from '$lib/xata';
 export const load = async ({ cookies }) => {
 	const id = cookies.get('session');
 
-	if (!id) return
+	if (!id) return;
 
 	const user = await xata.db.users.read(id);
 
 	if (user) redirect(307, '/kingdom-hall');
 
-	return
+	return;
 };
 
 export const actions = {
@@ -27,11 +27,9 @@ export const actions = {
 
 		user = await xata.db.users.filter('email', email).getFirst();
 
-    console.log(user.id)
-
 		if (user.adminCode === `${password.toString()}`) {
-			 cookies.set('session', user.id, { path: '/' });
-			redirect(307, '/kingdom-hall');
+			cookies.set('session', user.id, { path: '/' });
+			redirect(303, '/kingdom-hall');
 		} else {
 			return fail(400, { email, incorrect: true });
 		}
