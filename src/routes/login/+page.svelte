@@ -8,14 +8,15 @@
 	<Card class="w-md max-w-full">
 		<form method="POST" action="?/login" class="space-y-5">
 			<Heading tag="h1" class="text-center text-2xl">Login</Heading>
-			<Alert>Hello?</Alert>
 			{#if form?.missing}
-				<Alert class="error"
+				<Alert border class="error"
 					><span class="i-tabler-alert-triangle text-xl">.</span> The email and password field is required</Alert
-				>{/if}
-			{#if form?.incorrect}<Alert class="error"
+				>
+			{/if}
+			{#if form?.incorrect}<Alert border class="error"
 					><span class="i-tabler-alert-triangle text-xl">.</span> Invalid credentials!</Alert
-				>{/if}
+				>
+			{/if}
 			<Label>
 				<span>Email</span>
 				<Input name="email" type="text" placeholder="Email"></Input>
@@ -24,7 +25,7 @@
 				<span>Password</span>
 				<Input name="password" type="password" placeholder="Password"></Input>
 			</Label>
-			<Button type="submit" class="w-full">Login</Button>
+			<Button type="submit" class="w-full font-bold">Login</Button>
 			<Heading tag="h2" class="font-regular text-center text-sm"
 				>If you don't have an account <A href="/register" class="underline">register here!</A
 				></Heading

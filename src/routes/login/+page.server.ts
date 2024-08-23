@@ -27,6 +27,10 @@ export const actions = {
 
 		user = await xata.db.users.filter('email', email).getFirst();
 
+		if (!user) {
+			return fail(400, { email, missing: true });
+		}
+
 		if (user.adminCode === `${password.toString()}`) {
 			cookies.set('session', user.id, { path: '/' });
 			redirect(303, '/kingdom-hall');
