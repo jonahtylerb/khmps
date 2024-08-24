@@ -2,6 +2,10 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+.dark {
+	color-scheme: dark;
+}
+
 body,
 html {
 	@apply min-h-screen dark:bg-gray-900;

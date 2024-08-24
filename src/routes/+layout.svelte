@@ -14,7 +14,6 @@
 		Footer,
 		FooterBrand,
 		FooterCopyright,
-		FooterIcon,
 		FooterLink,
 		FooterLinkGroup
 	} from 'flowbite-svelte';
@@ -58,7 +57,7 @@
 	<slot></slot>
 </main>
 
-<Footer footerType="logo" class="mt-10 bg-gray-200">
+<Footer style="view-transition-name:footer;" footerType="logo" class="mt-10 bg-gray-200">
 	<div class="sm:flex sm:items-center sm:justify-between">
 		<FooterBrand href="/" src="/android-chrome-192x192.png" alt="KHMPS LOGO" name="KHMPS" />
 		<FooterLinkGroup
