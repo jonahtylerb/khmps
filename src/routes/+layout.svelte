@@ -1,9 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import 'uno.css';
-
 	import '@fontsource/noto-sans';
-
 	import {
 		DarkMode,
 		Navbar,
@@ -17,7 +15,9 @@
 		FooterLink,
 		FooterLinkGroup
 	} from 'flowbite-svelte';
+
 	import { onNavigate } from '$app/navigation';
+	import Toasts from '$lib/Toasts.svelte';
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
@@ -34,7 +34,7 @@
 <Navbar
 	fluid={true}
 	style="view-transition-name:nav;"
-	class="z-100 fixed left-0 top-0 w-full shadow-lg"
+	class="fixed left-0 top-0 z-10 w-full shadow-lg"
 >
 	<NavBrand href="/">
 		<img class="m-3 h-8" src="/android-chrome-512x512.png" alt="logo" />
@@ -56,6 +56,8 @@
 <main class="pt-30 family-noto-sans flex h-full w-full flex-col items-center px-10 lg:px-20">
 	<slot></slot>
 </main>
+
+<Toasts></Toasts>
 
 <Footer style="view-transition-name:footer;" footerType="logo" class="mt-10 bg-gray-200">
 	<div class="sm:flex sm:items-center sm:justify-between">
