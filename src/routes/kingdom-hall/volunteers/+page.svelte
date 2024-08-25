@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { flip } from 'svelte/animate';
+	import { beforeNavigate } from '$app/navigation';
 	import {
 		Table,
 		TableBody,
@@ -15,7 +16,7 @@
 
 	let { data } = $props();
 
-	const clonedUsers = JSON.parse(JSON.stringify(data.users));
+	let clonedUsers = JSON.parse(JSON.stringify(data.users));
 
 	let users = $state(data.users);
 
@@ -40,7 +41,7 @@
 				phone: '',
 				cong: '',
 				skills: '',
-				password: ''
+				adminCode: ''
 			}
 		];
 	}
@@ -53,11 +54,8 @@
 		users = users.filter((u: (typeof users)[0]) => u.id !== user.id);
 	}
 
-	// Saving Users
-	let saveDisabled = $state(false);
-	async function save() {
-		if (saveDisabled) return;
-		saveDisabled = true;
+	// Unsaved Changes
+	function getChanges() {
 		const addedUsers: typeof users = [];
 		const updatedUsers = users.filter((user: (typeof users)[0]) => {
 			if (user.id?.slice(0, 2) === 'u-') {
@@ -70,11 +68,22 @@
 				user.name !== cur?.name ||
 				user.email !== cur?.email ||
 				user.phone !== cur?.phone ||
+				user.adminCode !== cur?.adminCode ||
 				user.cong !== cur?.cong
 			) {
 				return true;
 			}
 		});
+		return { addedUsers, updatedUsers };
+	}
+
+	// Saving Users
+	let saveDisabled = $state(false);
+	async function save() {
+		if (saveDisabled) return;
+		saveDisabled = true;
+
+		const { addedUsers, updatedUsers } = getChanges();
 
 		const response = await fetch('/kingdom-hall/volunteers', {
 			method: 'POST',
@@ -94,14 +103,27 @@
 		if (serverReply.error) {
 			console.error(serverReply.error);
 		} else {
-			addedUsers.length = 0;
-			updatedUsers.length = 0;
 			deletedUsers.length = 0;
+			clonedUsers = JSON.parse(JSON.stringify(users));
 
 			addToast({ message: 'Saved', color: 'green', icon: 'i-tabler-check', timeout: 3000 });
 			saveDisabled = false;
 		}
 	}
+
+	beforeNavigate(({ cancel }) => {
+		const dirty = getChanges();
+
+		if (dirty.addedUsers.length > 0 || dirty.updatedUsers.length > 0 || deletedUsers.length > 0) {
+			if (
+				!confirm(
+					'Are you sure you want to leave this page? You have unsaved changes that will be lost.'
+				)
+			) {
+				cancel();
+			}
+		}
+	});
 </script>
 
 <section class="w-full">
@@ -116,7 +138,13 @@
 		</TableHead>
 		<TableBody tableBodyClass="divide-y">
 			{#each users as user (user.id)}
-				<User {user} tasks={data.tasks}></User>
+				<tr
+					id={user.id}
+					animate:flip={{ duration: 500 }}
+					class="scroll-mt-100px bg-white dark:border-gray-700 dark:bg-gray-800"
+				>
+					<User {user} tasks={data.tasks}></User>
+				</tr>
 			{/each}
 		</TableBody>
 	</Table>
@@ -138,29 +166,28 @@
 		</svelte:fragment>
 	</Modal>
 
-	<div class="mt-10 flex justify-between gap-5">
-		<Button
-			disabled={saveDisabled}
-			size="xl"
-			color="primary"
-			class="w-100% font-bold"
-			onclick={save}
-			>Save
-			<span
-				class={`${saveDisabled ? 'i-tabler-loader animate-spin' : 'i-tabler-device-floppy'} ml-1 text-lg`}
-			></span>
-		</Button>
-		<Button color="alternative" class="w-30%" href="/kingdom-hall/print/volunteers">
-			Print
-			<span class="i-tabler-printer ml-1"></span>
-		</Button>
-		<Button color="dark" class="whitespace-nowrap" onclick={addUser}>
-			Add User
-			<span class="i-tabler-plus ml-1"></span>
-		</Button>
-		<Button color="red" class="whitespace-nowrap" onclick={() => (deleteOpen = true)}>
-			Delete User
-			<span class="i-tabler-trash ml-1"></span>
-		</Button>
+	<div class="flex-center mt-10 flex flex-col-reverse gap-5 sm:flex-row">
+		<div class="max-w-screen flex w-full gap-3">
+			<Button disabled={saveDisabled} color="primary" class="w-3/4 font-bold" onclick={save}
+				>Save
+				<span
+					class={`${saveDisabled ? 'i-tabler-loader animate-spin' : 'i-tabler-device-floppy'} ml-1 text-lg`}
+				></span>
+			</Button>
+			<Button color="alternative" class="w-1/4" href="/kingdom-hall/print/volunteers">
+				Print
+				<span class="i-tabler-printer ml-1"></span>
+			</Button>
+		</div>
+		<div class="max-w-screen children:w-full lt-sm:w-full flex gap-3">
+			<Button color="dark" class="whitespace-nowrap" onclick={addUser}
+				>Add User
+				<span class="i-tabler-plus ml-1"></span>
+			</Button>
+			<Button color="red" class="whitespace-nowrap" onclick={() => (deleteOpen = true)}>
+				Delete User
+				<span class="i-tabler-trash ml-1"></span>
+			</Button>
+		</div>
 	</div>
 </section>
