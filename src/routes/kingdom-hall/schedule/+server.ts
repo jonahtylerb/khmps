@@ -43,7 +43,7 @@ export async function POST({ request }) {
 						assignedTo: task.assignedTo?.id,
 						due: task.due,
 						completed: task.completed,
-						sort: +task.id!.split('-')[1]
+						sort: +task.id
 					}
 				}
 			}))

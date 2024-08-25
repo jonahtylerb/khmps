@@ -3,19 +3,15 @@
 	import {
 		Table,
 		TableBody,
-		Radio,
-		TableBodyCell,
-		TableBodyRow,
 		TableHead,
-		Input,
 		TableHeadCell,
 		Button,
-		Dropdown,
 		Search,
 		Modal
 	} from 'flowbite-svelte';
 	import Fuse from 'fuse.js';
 	import { addToast } from '$lib/toastStore';
+	import Task from './Task.svelte';
 
 	let { data } = $props();
 
@@ -36,32 +32,18 @@
 		'Dec'
 	];
 
+	let tasks = $state(data.tasks);
+	let users = $state(data.users);
+
+	// Tasks Search
 	const tasksFuse = new Fuse(data.tasks, {
 		keys: ['title', 'assignedTo.name']
 	});
-
 	let taskSearch = $state('');
-
-	let tasks = $state(data.tasks);
-
 	$effect(() => {
 		let result = tasksFuse.search(taskSearch).map((i) => i.item);
 		if (result.length === 0) result = data.tasks;
 		tasks = result;
-	});
-
-	const usersFuse = new Fuse(data.users, {
-		keys: ['name']
-	});
-
-	let userSearch = $state('');
-
-	let users = $state(data.users);
-
-	$effect(() => {
-		let result = usersFuse.search(userSearch).map((i) => i.item);
-		if (result.length === 0) result = data.users;
-		users = result;
 	});
 
 	function addTask() {
@@ -80,46 +62,23 @@
 		];
 	}
 
-	function updateDate(id: string, task: (typeof tasks)[0]) {
-		let completed: string[] = [];
-		let due: string[] = [];
-
-		if (task.completed) {
-			completed = task.completed?.split('-');
-		}
-		if (task.due) {
-			due = task.due?.split('-');
-		}
-
-		if (completed.includes(id)) {
-			completed = completed.filter((c: (typeof completed)[0]) => c !== id);
-			due = due.filter((d: (typeof due)[0]) => d !== id);
-		} else if (due.includes(id)) {
-			completed = [...completed, id];
-		} else {
-			due = [...due, id];
-		}
-
-		task.due = due.join(due.length > 1 ? '-' : '');
-		task.completed = completed.join(completed.length > 1 ? '-' : '');
-	}
-
+	// Delete Tasks
 	const deletedTasks: typeof tasks = [];
 	let deleteOpen = $state(false);
-
 	function deleteTask(task: (typeof tasks)[0]) {
 		deletedTasks.push(task);
 		tasks = tasks.filter((t: (typeof tasks)[0]) => t.id !== task.id);
 	}
 
+	// Saving Tasks
 	let saveDisabled = $state(false);
-
 	async function save() {
 		if (saveDisabled) return;
 		saveDisabled = true;
 		const addedTasks: typeof tasks = [];
 		const updatedTasks = tasks.filter((task: (typeof tasks)[0]) => {
 			if (task.id?.slice(0, 2) === 't-') {
+				task.id = task.id.split('-')[1];
 				addedTasks.push(task);
 				return false;
 			}
@@ -149,11 +108,16 @@
 
 		let serverReply = await response.json();
 
+		// TODO: Error Handling
 		if (serverReply.error) {
 			console.error(serverReply.error);
 		} else {
-			saveDisabled = false;
+			addedTasks.length = 0;
+			updatedTasks.length = 0;
+			deletedTasks.length = 0;
+
 			addToast({ message: 'Saved', color: 'green', icon: 'i-tabler-check', timeout: 3000 });
+			saveDisabled = false;
 		}
 	}
 </script>
@@ -170,58 +134,7 @@
 		</TableHead>
 		<TableBody tableBodyClass="divide-y">
 			{#each tasks as task (task.id)}
-				<TableBodyRow id={task.id} class="scroll-mt-100px">
-					<TableBodyCell tdClass="!text-transparent whitespace-nowrap relative">
-						<Input
-							placeholder="Title"
-							class="!b-0 absolute inset-1 !bg-transparent p-1"
-							type="text"
-							bind:value={task.title}
-						/>
-						{task.title}
-					</TableBodyCell>
-					<TableBodyCell>
-						<Button
-							class="bg-transparent! b-0! ring-0! p-0"
-							color="light"
-							onclick={() => {
-								userSearch = '';
-								document.getElementById('s-' + task.id)?.focus();
-							}}
-							>{task.assignedTo.name}<span class="i-tabler-chevron-down ml-1 opacity-50"
-							></span></Button
-						>
-						<Dropdown
-							placement="bottom-start"
-							class="h-44 overflow-x-hidden overflow-y-scroll px-3 pb-3 text-sm"
-						>
-							<div slot="header" class="p-3">
-								<Search id={'s-' + task.id} size="md" bind:value={userSearch} />
-							</div>
-							{#each users as user (user.id)}
-								<div animate:flip={{ duration: 100 }}>
-									<Radio name={task.id} value={user} bind:group={task.assignedTo}>{user.name}</Radio
-									>
-								</div>
-							{/each}
-							<Button
-								class="mt-5 w-full"
-								size="sm"
-								color="alternative"
-								href="/kingdom-hall/volunteers">Add New User</Button
-							>
-						</Dropdown>
-					</TableBodyCell>
-					{#each [...Array(12).keys()] as i}
-						<TableBodyCell
-							tdClass={`p-2 b-x-1 dark:b-gray-7 relative b-gray-3 text-center text-lg ${task.due.split('-').includes(`${i + 1}`) ? 'bg-green-500/50' : ''}`}
-						>
-							<button class="absolute inset-0" onclick={() => updateDate(`${i + 1}`, task)}>
-								{task.completed?.split('-').includes(`${i + 1}`) ? 'x' : ''}
-							</button>
-						</TableBodyCell>
-					{/each}
-				</TableBodyRow>
+				<Task {users} {task}></Task>
 			{/each}
 		</TableBody>
 	</Table>

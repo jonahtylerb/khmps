@@ -53,7 +53,7 @@
 		</NavLi>
 	</NavUl>
 </Navbar>
-<main class="pt-30 family-noto-sans flex h-full w-full flex-col items-center px-10 lg:px-20">
+<main class="pt-30 flex h-full w-full flex-col items-center px-10 lg:px-20">
 	<slot></slot>
 </main>
 

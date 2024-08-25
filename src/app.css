@@ -6,9 +6,13 @@
 	color-scheme: dark;
 }
 
+* {
+	font-family: 'Noto Sans', sans-serif;
+}
+
 body,
 html {
-	@apply min-h-screen dark:bg-gray-900;
+	@apply flex min-h-screen flex-col justify-between dark:bg-gray-900;
 	scroll-behavior: smooth;
 }
 
