@@ -14,20 +14,20 @@
 	import { addToast } from '$lib/toastStore';
 	import User from './User.svelte';
 
-	let { data } = $props();
+	import { tasksStore, usersStore } from '$lib/data';
 
-	let clonedUsers = JSON.parse(JSON.stringify(data.users));
+	let clonedUsers = JSON.parse(JSON.stringify($usersStore));
 
-	let users = $state(data.users);
+	let users = $state($usersStore);
 
 	// Users Search
-	const usersFuse = new Fuse(data.users, {
-		keys: ['name']
+	const usersFuse = new Fuse($usersStore, {
+		keys: ['name', 'email', 'phone', 'cong']
 	});
 	let userSearch = $state('');
 	$effect(() => {
 		let result = usersFuse.search(userSearch).map((i) => i.item);
-		if (result.length === 0) result = data.users;
+		if (result.length === 0) result = $usersStore;
 		users = result;
 	});
 
@@ -41,7 +41,7 @@
 				phone: '',
 				cong: '',
 				skills: [],
-				password: ''
+				adminCode: ''
 			}
 		];
 	}
@@ -69,7 +69,7 @@
 				user.email !== cur?.email ||
 				user.phone !== cur?.phone ||
 				user.cong !== cur?.cong ||
-				user.skills !== cur?.skills
+				user.skills.sort().join('') !== cur?.skills.sort().join('')
 			) {
 				return true;
 			}
@@ -137,13 +137,13 @@
 			<TableHeadCell>Skils</TableHeadCell>
 		</TableHead>
 		<TableBody tableBodyClass="divide-y">
-			{#each users as user (user.id)}
+			{#each users as user, i (user.id)}
 				<tr
 					id={user.id}
 					animate:flip={{ duration: 500 }}
 					class="scroll-mt-100px bg-white dark:border-gray-700 dark:bg-gray-800"
 				>
-					<User {user} tasks={data.tasks}></User>
+					<User bind:user={users[i]} tasks={$tasksStore}></User>
 				</tr>
 			{/each}
 		</TableBody>

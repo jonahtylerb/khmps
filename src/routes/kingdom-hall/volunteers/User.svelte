@@ -1,23 +1,15 @@
 <script lang="ts">
 	import { Search, Button, Dropdown, Input, TableBodyCell, Checkbox } from 'flowbite-svelte';
 	import { flip } from 'svelte/animate';
-
-	type User = {
-		id: string;
-		name: string;
-		email: string;
-		phone: string;
-		cong: string;
-		skills: string[];
-		password: string;
-	};
-
+	import type { User, Task } from '$lib/data';
 	interface Props {
 		user: User;
-		tasks: any[];
+		tasks: Task[];
 	}
 
-	let { user, tasks }: Props = $props();
+	import { tasksStore } from '$lib/data';
+
+	let { user = $bindable() }: Props = $props();
 
 	let tasksSearch = $state('');
 
@@ -30,7 +22,7 @@
 	}
 </script>
 
-<TableBodyCell tdClass="!text-transparent whitespace-nowrap relative">
+<TableBodyCell tdClass="!text-transparent whitespace-nowrap relative select-none ">
 	<Input
 		placeholder="Name"
 		class="!b-0 absolute inset-1 !bg-transparent p-1"
@@ -85,7 +77,7 @@
 		<div slot="header" class="p-3">
 			<Search id={'s-' + user.id} size="md" bind:value={tasksSearch} />
 		</div>
-		{#each tasks as task (task.id)}
+		{#each $tasksStore as task (task.id)}
 			<div animate:flip={{ duration: 100 }}>
 				<Checkbox
 					name={task.id}
