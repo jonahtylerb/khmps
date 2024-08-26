@@ -40,8 +40,8 @@
 				email: '',
 				phone: '',
 				cong: '',
-				skills: '',
-				adminCode: ''
+				skills: [],
+				password: ''
 			}
 		];
 	}
@@ -68,8 +68,8 @@
 				user.name !== cur?.name ||
 				user.email !== cur?.email ||
 				user.phone !== cur?.phone ||
-				user.adminCode !== cur?.adminCode ||
-				user.cong !== cur?.cong
+				user.cong !== cur?.cong ||
+				user.skills !== cur?.skills
 			) {
 				return true;
 			}

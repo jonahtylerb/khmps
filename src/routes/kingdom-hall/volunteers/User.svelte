@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Search, Button, Radio, Dropdown, Input, TableBodyCell } from 'flowbite-svelte';
+	import { Search, Button, Dropdown, Input, TableBodyCell, Checkbox } from 'flowbite-svelte';
 	import { flip } from 'svelte/animate';
 
 	type User = {
@@ -8,7 +8,7 @@
 		email: string;
 		phone: string;
 		cong: string;
-		skills: string;
+		skills: string[];
 		password: string;
 	};
 
@@ -20,6 +20,14 @@
 	let { user, tasks }: Props = $props();
 
 	let tasksSearch = $state('');
+
+	function toggleSkill(id: string) {
+		if (user.skills.includes(id)) {
+			user.skills = user.skills.filter((s) => s !== id);
+		} else {
+			user.skills = [...user.skills, id];
+		}
+	}
 </script>
 
 <TableBodyCell tdClass="!text-transparent whitespace-nowrap relative">
@@ -79,7 +87,11 @@
 		</div>
 		{#each tasks as task (task.id)}
 			<div animate:flip={{ duration: 100 }}>
-				<Radio name={task.id} value={task} bind:group={task.skills}>{task.title}</Radio>
+				<Checkbox
+					name={task.id}
+					checked={user.skills.includes(task.id)}
+					onclick={() => toggleSkill(task.id)}>{task.title}</Checkbox
+				>
 			</div>
 		{/each}
 		<Button class="mt-5 w-full" size="sm" color="alternative" href="/kingdom-hall/volunteers"
