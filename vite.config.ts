@@ -1,7 +1,14 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import UnoCSS from 'unocss/vite';
 import extractorSvelte from '@unocss/extractor-svelte';
-import { presetAttributify, presetIcons, presetTagify, presetUno } from 'unocss';
+import {
+	presetAttributify,
+	presetIcons,
+	presetTagify,
+	presetUno,
+	transformerDirectives,
+	transformerVariantGroup
+} from 'unocss';
 import type { UserConfig } from 'vite';
 
 const config: UserConfig = {
@@ -18,6 +25,7 @@ const config: UserConfig = {
 					}
 				})
 			],
+			transformers: [transformerDirectives(), transformerVariantGroup()],
 			extractors: [extractorSvelte()],
 			rules: [
 				[

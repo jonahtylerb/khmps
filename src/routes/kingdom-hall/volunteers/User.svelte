@@ -2,6 +2,7 @@
 	import { Search, Button, Dropdown, Input, TableBodyCell, Checkbox } from 'flowbite-svelte';
 	import { flip } from 'svelte/animate';
 	import type { User, Task } from '$lib/data';
+	import Fuse from 'fuse.js';
 	interface Props {
 		user: User;
 		tasks: Task[];
@@ -11,7 +12,18 @@
 
 	let { user = $bindable() }: Props = $props();
 
+	// Tasks Search
+	const tasksFuse = new Fuse($tasksStore, {
+		keys: ['title', 'assignedTo.name']
+	});
+
 	let tasksSearch = $state('');
+	let tasks = $state($tasksStore);
+	$effect(() => {
+		let result = tasksFuse.search(tasksSearch).map((i) => i.item);
+		if (result.length === 0) result = $tasksStore;
+		tasks = result;
+	});
 
 	function toggleSkill(id: string) {
 		if (user.skills.includes(id)) {
@@ -77,7 +89,7 @@
 		<div slot="header" class="p-3">
 			<Search id={'s-' + user.id} size="md" bind:value={tasksSearch} />
 		</div>
-		{#each $tasksStore as task (task.id)}
+		{#each tasks as task (task.id)}
 			<div animate:flip={{ duration: 100 }}>
 				<Checkbox
 					name={task.id}

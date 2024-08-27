@@ -110,7 +110,10 @@
 				updatedTasks: updatedTasks,
 				deletedTasks: deletedTasks,
 				addedTasks: addedTasks,
-				kingdomHall: $userStore.kingdomHall?.name
+				kingdomHall:
+					typeof $userStore.kingdomHall === 'string'
+						? $userStore.kingdomHall
+						: $userStore.kingdomHall?.name
 			}),
 			headers: {
 				'content-type': 'application/json'
