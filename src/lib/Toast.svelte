@@ -1,11 +1,13 @@
-<script>
-	import { Toast } from 'flowbite-svelte';
+<script lang="ts">
+	import { Toast, type ColorVariant } from 'flowbite-svelte';
 	import { slide } from 'svelte/transition';
 
-	let { icon, message, color } = $props();
+	type Props = { icon: string; message: string; color: ColorVariant };
+
+	let { icon, message, color }: Props = $props();
 </script>
 
-<Toast transition={slide} {color} class="w-100 max-w-screen">
+<Toast transition={slide} {color} class="w-100 rounded-2 b-1 b-white/10 max-w-full">
 	<svelte:fragment slot="icon">
 		<span class={icon}></span>
 		<span class="sr-only">icon</span>

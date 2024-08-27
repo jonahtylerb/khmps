@@ -13,8 +13,9 @@
 	import Fuse from 'fuse.js';
 	import { addToast } from '$lib/toastStore';
 	import User from './User.svelte';
-
 	import { tasksStore, usersStore } from '$lib/data';
+
+	let { data } = $props();
 
 	let clonedUsers = JSON.parse(JSON.stringify($usersStore));
 
@@ -41,7 +42,8 @@
 				phone: '',
 				cong: '',
 				skills: [],
-				adminCode: ''
+				adminCode: '',
+				kingdomHall: data.user.kingdomHall!.id || ''
 			}
 		];
 	}
@@ -68,8 +70,9 @@
 				user.name !== cur?.name ||
 				user.email !== cur?.email ||
 				user.phone !== cur?.phone ||
+				user.adminCode !== cur?.adminCode ||
 				user.cong !== cur?.cong ||
-				user.skills.sort().join('') !== cur?.skills.sort().join('')
+				user.skills.toSorted().join('') !== cur?.skills.toSorted().join('')
 			) {
 				return true;
 			}
@@ -84,6 +87,12 @@
 		saveDisabled = true;
 
 		const { addedUsers, updatedUsers } = getChanges();
+
+		if (!addedUsers.length && !updatedUsers.length && !deletedUsers.length) {
+			addToast({ message: 'Saved', color: 'green', icon: 'i-tabler-check', timeout: 3000 });
+			saveDisabled = false;
+			return;
+		}
 
 		const response = await fetch('/kingdom-hall/volunteers', {
 			method: 'POST',
@@ -121,6 +130,8 @@
 				)
 			) {
 				cancel();
+			} else {
+				usersStore.set(data.users);
 			}
 		}
 	});

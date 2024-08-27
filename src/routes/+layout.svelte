@@ -53,7 +53,10 @@
 		</NavLi>
 	</NavUl>
 </Navbar>
-<main class="pt-30 max-w-screen w-400 flex h-full flex-col items-center self-center px-10 lg:px-20">
+
+<div class="size-0"></div>
+
+<main class="pt-30 max-w-screen w-400 flex h-full flex-col items-center px-5 sm:px-10 lg:px-20">
 	<slot></slot>
 </main>
 

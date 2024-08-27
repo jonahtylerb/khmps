@@ -16,10 +16,7 @@ export type User = {
 	cong: string;
 	skills: string[];
 	adminCode: string;
-	kingdomHall?: {
-		name: string;
-		id: string;
-	};
+	kingdomHall?: { name: string; id: string } | string;
 };
 
 export const tasksStore = writable<Task[]>([]);

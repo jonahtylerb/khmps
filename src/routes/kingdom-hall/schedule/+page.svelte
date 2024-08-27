@@ -18,6 +18,8 @@
 
 	let clonedTasks = JSON.parse(JSON.stringify($tasksStore));
 
+	let { data } = $props();
+
 	const months = [
 		'Jan',
 		'Feb',
@@ -130,7 +132,7 @@
 	}
 
 	beforeNavigate(({ cancel }) => {
-		let dirty = getChanges();
+		const dirty = getChanges();
 
 		if (dirty.addedTasks.length > 0 || dirty.updatedTasks.length > 0 || deletedTasks.length > 0) {
 			if (
@@ -139,6 +141,8 @@
 				)
 			) {
 				cancel();
+			} else {
+				tasksStore.set(data.tasks);
 			}
 		}
 	});
