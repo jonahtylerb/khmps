@@ -4,8 +4,8 @@
 	let { form } = $props();
 </script>
 
-<section class="h-70vh mx-auto flex items-center justify-center">
-	<Card class="w-md max-w-full">
+<section class="mx-auto flex h-full w-full items-center justify-center">
+	<Card>
 		<form method="POST" action="?/login" class="space-y-5">
 			<Heading tag="h1" class="text-center text-2xl">Login</Heading>
 			{#if form?.missing}
@@ -26,7 +26,7 @@
 				<Input name="password" type="password" placeholder="Password"></Input>
 			</Label>
 			<Button type="submit" class="w-full font-bold">Login</Button>
-			<Heading tag="h2" class="font-regular text-center text-sm"
+			<Heading tag="h2" class="font-regular text-center text-xs sm:text-sm"
 				>If you don't have an account <A href="/register" class="underline">register here!</A
 				></Heading
 			>

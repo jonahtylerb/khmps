@@ -1,25 +1,29 @@
 <script lang="ts">
 	import { Search, Button, Dropdown, Input, TableBodyCell, Checkbox } from 'flowbite-svelte';
 	import { flip } from 'svelte/animate';
-
-	type User = {
-		id: string;
-		name: string;
-		email: string;
-		phone: string;
-		cong: string;
-		skills: string[];
-		password: string;
-	};
-
+	import type { User, Task } from '$lib/data';
+	import Fuse from 'fuse.js';
 	interface Props {
 		user: User;
-		tasks: any[];
+		tasks: Task[];
 	}
 
-	let { user, tasks }: Props = $props();
+	import { tasksStore } from '$lib/data';
+
+	let { user = $bindable() }: Props = $props();
+
+	// Tasks Search
+	const tasksFuse = new Fuse($tasksStore, {
+		keys: ['title', 'assignedTo.name']
+	});
 
 	let tasksSearch = $state('');
+	let tasks = $state($tasksStore);
+	$effect(() => {
+		let result = tasksFuse.search(tasksSearch).map((i) => i.item);
+		if (result.length === 0) result = $tasksStore;
+		tasks = result;
+	});
 
 	function toggleSkill(id: string) {
 		if (user.skills.includes(id)) {
@@ -30,7 +34,7 @@
 	}
 </script>
 
-<TableBodyCell tdClass="!text-transparent whitespace-nowrap relative">
+<TableBodyCell tdClass="!text-transparent whitespace-nowrap relative select-none ">
 	<Input
 		placeholder="Name"
 		class="!b-0 absolute inset-1 !bg-transparent p-1"

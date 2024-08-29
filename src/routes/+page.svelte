@@ -3,7 +3,7 @@
 </script>
 
 <main class="max-w-90ch space-y-5">
-	<Heading tag="h1" class="mb-10"
+	<Heading tag="h1" class="lt-sm:text-4xl mb-10"
 		>Kingdom Hall <span class="decoration-blue-5 decoration-5 underline">Maintenance Program</span> Support</Heading
 	>
 	<P>

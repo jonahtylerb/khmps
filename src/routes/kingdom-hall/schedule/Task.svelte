@@ -1,39 +1,28 @@
 <script lang="ts">
-	import {
-		Button,
-		Search,
-		Dropdown,
-		Input,
-		Radio,
-		TableBodyCell,
-		TableBodyRow
-	} from 'flowbite-svelte';
+	import { Button, Search, Dropdown, Input, Checkbox, TableBodyCell } from 'flowbite-svelte';
 	import { flip } from 'svelte/animate';
 	import Fuse from 'fuse.js';
-
-	type Task = {
-		id: string;
-		title: string;
-		due: string;
-		completed: string;
-		assignedTo: { id: string; name: string };
-	};
+	import type { User, Task } from '$lib/data';
+	import { usersStore } from '$lib/data';
 
 	interface Props {
 		task: Task;
-		users: { id: string; name: string }[];
+		users: User[];
 	}
 
-	let { task, users }: Props = $props();
+	let { task = $bindable() }: Props = $props();
+
+	let users = $state($usersStore);
 
 	// Users Search
-	const usersFuse = new Fuse(users, {
+	const usersFuse = new Fuse($usersStore, {
 		keys: ['name']
 	});
+
 	let userSearch = $state('');
 	$effect(() => {
 		let result = usersFuse.search(userSearch).map((i) => i.item);
-		if (result.length === 0) result = users;
+		if (result.length === 0) result = $usersStore;
 		users = result;
 	});
 
@@ -62,7 +51,7 @@
 	}
 </script>
 
-<TableBodyCell tdClass="!text-transparent whitespace-nowrap relative">
+<TableBodyCell tdClass="!text-transparent select-none whitespace-nowrap relative">
 	<Input
 		placeholder="Title"
 		class="!b-0 absolute inset-1 !bg-transparent p-1"
@@ -89,7 +78,11 @@
 		</div>
 		{#each users as user (user.id)}
 			<div animate:flip={{ duration: 100 }}>
-				<Radio name={task.id} value={user} bind:group={task.assignedTo}>{user.name}</Radio>
+				<Checkbox
+					name={task.id}
+					checked={user.id === task.assignedTo?.id}
+					onclick={() => (task.assignedTo = user)}>{user.name}</Checkbox
+				>
 			</div>
 		{/each}
 		<Button class="mt-5 w-full" size="sm" color="alternative" href="/kingdom-hall/volunteers"

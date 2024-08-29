@@ -14,9 +14,11 @@
 	import { beforeNavigate } from '$app/navigation';
 	import Task from './Task.svelte';
 
-	let { data } = $props();
+	import { tasksStore, userStore, usersStore } from '$lib/data';
 
-	let clonedTasks = JSON.parse(JSON.stringify(data.tasks));
+	let clonedTasks = JSON.parse(JSON.stringify($tasksStore));
+
+	let { data } = $props();
 
 	const months = [
 		'Jan',
@@ -33,17 +35,17 @@
 		'Dec'
 	];
 
-	let tasks = $state(data.tasks);
-	let users = $state(data.users);
+	let tasks = $state($tasksStore);
+	let users = $state($usersStore);
 
 	// Tasks Search
-	const tasksFuse = new Fuse(data.tasks, {
+	const tasksFuse = new Fuse($tasksStore, {
 		keys: ['title', 'assignedTo.name']
 	});
 	let taskSearch = $state('');
 	$effect(() => {
 		let result = tasksFuse.search(taskSearch).map((i) => i.item);
-		if (result.length === 0) result = data.tasks;
+		if (result.length === 0) result = $tasksStore;
 		tasks = result;
 	});
 
@@ -108,7 +110,10 @@
 				updatedTasks: updatedTasks,
 				deletedTasks: deletedTasks,
 				addedTasks: addedTasks,
-				kingdomHall: data.user.kingdomHall?.name
+				kingdomHall:
+					typeof $userStore.kingdomHall === 'string'
+						? $userStore.kingdomHall
+						: $userStore.kingdomHall?.name
 			}),
 			headers: {
 				'content-type': 'application/json'
@@ -130,7 +135,7 @@
 	}
 
 	beforeNavigate(({ cancel }) => {
-		let dirty = getChanges();
+		const dirty = getChanges();
 
 		if (dirty.addedTasks.length > 0 || dirty.updatedTasks.length > 0 || deletedTasks.length > 0) {
 			if (
@@ -139,6 +144,8 @@
 				)
 			) {
 				cancel();
+			} else {
+				tasksStore.set(data.tasks);
 			}
 		}
 	});
@@ -155,13 +162,13 @@
 			{/each}
 		</TableHead>
 		<TableBody tableBodyClass="divide-y">
-			{#each tasks as task (task.id)}
+			{#each tasks as task, i (task.id)}
 				<tr
 					id={task.id}
 					animate:flip={{ duration: 500 }}
 					class="scroll-mt-100px bg-white dark:border-gray-700 dark:bg-gray-800"
 				>
-					<Task {users} {task}></Task>
+					<Task bind:task={tasks[i]} {users}></Task>
 				</tr>
 			{/each}
 		</TableBody>

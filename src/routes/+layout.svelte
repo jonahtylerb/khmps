@@ -16,7 +16,7 @@
 		FooterLinkGroup
 	} from 'flowbite-svelte';
 
-	import { onNavigate } from '$app/navigation';
+	import { goto, onNavigate } from '$app/navigation';
 	import Toasts from '$lib/Toasts.svelte';
 
 	onNavigate((navigation) => {
@@ -29,12 +29,21 @@
 			});
 		});
 	});
+
+	async function logout() {
+		const res = await fetch('/login', {
+			method: 'DELETE'
+		});
+		if (res.status == 200) {
+			goto('/login');
+		}
+	}
 </script>
 
 <Navbar
 	fluid={true}
 	style="view-transition-name:nav;"
-	class="fixed left-0 top-0 z-10 w-full shadow-lg"
+	class="fixed left-0 top-0 z-10 w-full shadow-lg print:hidden"
 >
 	<NavBrand href="/">
 		<img class="m-3 h-8" src="/android-chrome-512x512.png" alt="logo" />
@@ -47,26 +56,33 @@
 		<NavLi href="/kingdom-hall">Dashboard</NavLi>
 		<NavLi href="/kingdom-hall/schedule">Yearly Schedule</NavLi>
 		<NavLi href="/kingdom-hall/volunteers">Volunteers</NavLi>
-		<NavLi href="/about">About</NavLi>
 		<NavLi>
-			<button type="submit" id="logout">Logout</button>
+			<button onclick={logout} id="logout">Logout</button>
 		</NavLi>
 	</NavUl>
 </Navbar>
-<main class="pt-30 max-w-screen w-400 flex h-full flex-col items-center self-center px-10 lg:px-20">
+
+<div class="size-0"></div>
+
+<main
+	class="pt-30 max-w-screen w-400 print:p-0! flex h-full flex-col items-center px-5 sm:px-10 lg:px-20"
+>
 	<slot></slot>
 </main>
 
 <Toasts></Toasts>
 
-<Footer style="view-transition-name:footer;" footerType="logo" class="mt-10 bg-gray-200">
+<Footer
+	style="view-transition-name:footer;"
+	footerType="logo"
+	class="mt-10 w-full bg-gray-200 print:hidden"
+>
 	<div class="sm:flex sm:items-center sm:justify-between">
 		<FooterBrand href="/" src="/android-chrome-192x192.png" alt="KHMPS LOGO" name="KHMPS" />
 		<FooterLinkGroup
 			ulClass="flex flex-wrap items-center lt-md:my-6 text-sm text-gray-500 sm:mb-0 dark:text-gray-400"
 		>
 			<FooterLink href="/">Home</FooterLink>
-			<FooterLink href="/about">About</FooterLink>
 			<FooterLink href="/register">Register</FooterLink>
 			<FooterLink href="mailto:khmpsinfo@gmail.com">Contact</FooterLink>
 		</FooterLinkGroup>

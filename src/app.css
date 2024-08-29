@@ -12,14 +12,14 @@
 
 body,
 html {
-	@apply flex min-h-screen flex-col justify-between dark:bg-gray-900;
+	@apply flex min-h-screen w-full flex-col items-center justify-between dark:bg-gray-900;
 	scroll-behavior: smooth;
 }
 
 @keyframes in {
 	from {
 		opacity: 0;
-		scale: 0.9;
+		scale: 0.95;
 	}
 }
 

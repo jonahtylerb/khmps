@@ -13,21 +13,22 @@
 	import Fuse from 'fuse.js';
 	import { addToast } from '$lib/toastStore';
 	import User from './User.svelte';
+	import { tasksStore, usersStore } from '$lib/data';
 
 	let { data } = $props();
 
-	let clonedUsers = JSON.parse(JSON.stringify(data.users));
+	let clonedUsers = JSON.parse(JSON.stringify($usersStore));
 
-	let users = $state(data.users);
+	let users = $state($usersStore);
 
 	// Users Search
-	const usersFuse = new Fuse(data.users, {
-		keys: ['name']
+	const usersFuse = new Fuse($usersStore, {
+		keys: ['name', 'email', 'phone', 'cong']
 	});
 	let userSearch = $state('');
 	$effect(() => {
 		let result = usersFuse.search(userSearch).map((i) => i.item);
-		if (result.length === 0) result = data.users;
+		if (result.length === 0) result = $usersStore;
 		users = result;
 	});
 
@@ -41,7 +42,8 @@
 				phone: '',
 				cong: '',
 				skills: [],
-				password: ''
+				adminCode: '',
+				kingdomHall: data.user.kingdomHall!.id || ''
 			}
 		];
 	}
@@ -68,8 +70,9 @@
 				user.name !== cur?.name ||
 				user.email !== cur?.email ||
 				user.phone !== cur?.phone ||
+				user.adminCode !== cur?.adminCode ||
 				user.cong !== cur?.cong ||
-				user.skills !== cur?.skills
+				user.skills.toSorted().join('') !== cur?.skills.toSorted().join('')
 			) {
 				return true;
 			}
@@ -84,6 +87,12 @@
 		saveDisabled = true;
 
 		const { addedUsers, updatedUsers } = getChanges();
+
+		if (!addedUsers.length && !updatedUsers.length && !deletedUsers.length) {
+			addToast({ message: 'Saved', color: 'green', icon: 'i-tabler-check', timeout: 3000 });
+			saveDisabled = false;
+			return;
+		}
 
 		const response = await fetch('/kingdom-hall/volunteers', {
 			method: 'POST',
@@ -121,6 +130,8 @@
 				)
 			) {
 				cancel();
+			} else {
+				usersStore.set(data.users);
 			}
 		}
 	});
@@ -137,13 +148,13 @@
 			<TableHeadCell>Skils</TableHeadCell>
 		</TableHead>
 		<TableBody tableBodyClass="divide-y">
-			{#each users as user (user.id)}
+			{#each users as user, i (user.id)}
 				<tr
 					id={user.id}
 					animate:flip={{ duration: 500 }}
 					class="scroll-mt-100px bg-white dark:border-gray-700 dark:bg-gray-800"
 				>
-					<User {user} tasks={data.tasks}></User>
+					<User bind:user={users[i]} tasks={$tasksStore}></User>
 				</tr>
 			{/each}
 		</TableBody>
