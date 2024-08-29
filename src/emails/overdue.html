@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+	<body>
+		<div
+			style="
+				background-color: #f5f5f5;
+				color: #262626;
+				font-family: 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+				font-size: 16px;
+				font-weight: 400;
+				letter-spacing: 0.15008px;
+				line-height: 1.5;
+				margin: 0;
+				padding: 32px 0;
+				min-height: 100%;
+				width: 100%;
+			"
+		>
+			<table
+				align="center"
+				width="100%"
+				style="margin: 0 auto; max-width: 600px; background-color: #ffffff"
+				role="presentation"
+				cellspacing="0"
+				cellpadding="0"
+				border="0"
+			>
+				<tbody>
+					<tr style="width: 100%">
+						<td>
+							<div style="padding: 16px 0px 16px 0px; text-align: center">
+								<img
+									alt="KHMPS logo"
+									src="https://khmps.com/android-chrome-512x512.png"
+									height="128"
+									style="
+										height: 128px;
+										outline: none;
+										border: none;
+										text-decoration: none;
+										vertical-align: middle;
+										display: inline-block;
+										max-width: 100%;
+									"
+								/>
+							</div>
+							<h1
+								style="
+									font-weight: bold;
+									text-align: center;
+									margin: 0;
+									font-size: 32px;
+									padding: 0px 0px 0px 0px;
+								"
+							>
+								KHMPS
+							</h1>
+							<div style="padding: 16px 20px 0px 20px">
+								<hr style="width: 100%; border: none; border-top: 2px solid #ffd5b8; margin: 0" />
+							</div>
+							<div style="font-weight: normal; padding: 16px 24px 16px 24px">
+								<p>Dear {{ name }}</p>
+								<p>
+									Thank you for your volunteer spirit to help with the Maintenance at your local
+									Kingdom Hall. This email is to notify you that your Maintenance task is overdue.
+									Please complete your task as soon as possible. If you have already completed the
+									task, please click the completed button below.
+								</p>
+								<p>
+									<strong>Task - {{ task }}<br />Month of - {{ due }}</strong>
+								</p>
+								<p>
+									You will find the task card with instructions and any Job Hazard Analysis for this
+									task in the Maintenance binder at your Kingdom Hall. If you can no longer complete
+									the task, please contact your Maintenance Coordinator or Committee.
+								</p>
+								<p>
+									After the task is completed, please refer back to this email and click to complete
+									the task below.
+								</p>
+								<p>Thank you for all you do in helping maintain the Kingdom Hall!</p>
+							</div>
+							<div style="text-align: center; padding: 16px 24px 16px 24px">
+								<a
+									href="https://www.khmps.com/complete/{{id}}"
+									style="
+										color: #ffffff;
+										font-size: 16px;
+										font-weight: bold;
+										background-color: #f97316;
+										border-radius: 4px;
+										display: inline-block;
+										padding: 12px 20px;
+										text-decoration: none;
+									"
+									target="_blank"
+									><span
+										><!--[if mso
+											]><i
+												style="letter-spacing: 20px; mso-font-width: -100%; mso-text-raise: 30"
+												hidden
+												>&nbsp;</i
+											><!
+										[endif]--></span
+									><span>Mark Task Completed</span
+									><span
+										><!--[if mso
+											]><i style="letter-spacing: 20px; mso-font-width: -100%" hidden>&nbsp;</i><!
+										[endif]--></span
+									></a
+								>
+							</div>
+							<div
+								style="
+									color: #737373;
+									background-color: #ffffff;
+									font-size: 10px;
+									font-weight: normal;
+									text-align: center;
+									padding: 16px 24px 16px 24px;
+								"
+							>
+								Email sent from KHMPS automated email system
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
