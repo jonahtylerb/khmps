@@ -4,28 +4,29 @@ export const mailerSend = new MailerSend({
 	apiKey: import.meta.env.VITE_MAILERSEND_API_KEY
 });
 
-export function sendEmail(
-	sender: string,
-	recipient: string,
-	name: string,
-	subject: string,
-	message: string = '',
-	text: string = ''
-) {
+type Email = {
+	sender: string;
+	recipient: string;
+	cc?: string[];
+	name: string;
+	subject: string;
+	html?: string;
+	text?: string;
+};
+
+export function sendEmail({ sender, recipient, cc, name, subject, html = '', text = '' }: Email) {
 	const sentFrom = new Sender(sender, 'KHMPS');
 
 	const recipients = [new Recipient(recipient, name)];
-
-	// const cc = [
-	//   new Recipient("your_cc@client.com", "Your Client CC")
-	// ];
 
 	const emailParams = new EmailParams()
 		.setFrom(sentFrom)
 		.setTo(recipients)
 		.setSubject(subject)
-		.setHtml(message)
+		.setHtml(html)
 		.setText(text);
+
+	if (cc) emailParams.setCc(cc.map((c) => new Recipient(c)));
 
 	mailerSend.email
 		.send(emailParams)

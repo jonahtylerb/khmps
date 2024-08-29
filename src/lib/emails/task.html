@@ -61,24 +61,28 @@
 							<div style="font-weight: normal; padding: 16px 24px 16px 24px">
 								<p>Dear {{ name }}</p>
 								<p>
-									You are now a user on the Kingdom Hall Maintenance Program Support website
-									(KHMPS)!
+									Thank you for your willing volunteer spirit to help with the Maintenance at your
+									local Kingdom Hall. This email is to notify you that you have been assigned a Task
+									card from the Maintenance Program.
 								</p>
 								<p>
-									Below is your User Name and Password. You may change your password after you
-									login.
+									<strong>Task - {{ task }}<br />Month of - {{ due }}</strong>
+								</p>
+								<p>This task can be completed at your convenience at any time during the month.</p>
+								<p>
+									You will find the task card with instructions and any Job Hazard Analysis for this
+									task in the Maintenance binder at your Kingdom Hall. If you can no longer complete
+									the task, please contact your Maintenance Coordinator or Committee.
 								</p>
 								<p>
-									You can now access your Kingdom Hall&#39;s online Maintenance Program Support
-									Dashboard.
+									After the task is completed, please refer back to this email and click to complete
+									the task below.
 								</p>
-								<p>
-									<strong>User Name: {{ email }}<br />Password: {{ password }}</strong>
-								</p>
+								<p>Thank you for all you do in helping maintain the Kingdom Hall!</p>
 							</div>
 							<div style="text-align: center; padding: 16px 24px 16px 24px">
 								<a
-									href="https://www.khmps.com/login"
+									href="https://khmps.com/complete/{{id}}"
 									style="
 										color: #ffffff;
 										font-size: 16px;
@@ -98,7 +102,7 @@
 												>&nbsp;</i
 											><!
 										[endif]--></span
-									><span>Login to KHMPS</span
+									><span>Mark Task Completed</span
 									><span
 										><!--[if mso
 											]><i style="letter-spacing: 20px; mso-font-width: -100%" hidden>&nbsp;</i><!

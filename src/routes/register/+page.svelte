@@ -1,5 +1,8 @@
 <script>
-	import { Button, Heading, Input, Label, Select } from 'flowbite-svelte';
+	import { redirect } from '@sveltejs/kit';
+	import { Button, Heading, Input, Label, Modal, Select } from 'flowbite-svelte';
+
+	let { form } = $props();
 
 	let servingAs = $state('');
 </script>
@@ -54,4 +57,14 @@
 		</div>
 		<Button type="submit" class="mt-8! w-full text-base font-bold">Submit</Button>
 	</form>
+
+	{#if form?.submitted}
+		<Modal title="Successfully submitted!" open={true} autoclose>
+			<p>Thank you for your submission.</p>
+			<p>You should hear back in a few days.</p>
+			<svelte:fragment slot="footer">
+				<Button onclick={() => (window.location.href = '/')}>OK</Button>
+			</svelte:fragment>
+		</Modal>
+	{/if}
 </section>

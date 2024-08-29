@@ -1,0 +1,135 @@
+{
+	"root": {
+		"type": "EmailLayout",
+		"data": {
+			"backdropColor": "#F5F5F5",
+			"canvasColor": "#FFFFFF",
+			"textColor": "#262626",
+			"fontFamily": "MODERN_SANS",
+			"childrenIds": [
+				"block-1724896487235",
+				"block-1724896592242",
+				"block-1724896617129",
+				"block-1724896658320",
+				"block-1724896807082",
+				"block-1724896875532"
+			]
+		}
+	},
+	"block-1724896487235": {
+		"type": "Image",
+		"data": {
+			"style": {
+				"padding": {
+					"top": 16,
+					"bottom": 16,
+					"right": 0,
+					"left": 0
+				},
+				"textAlign": "center"
+			},
+			"props": {
+				"height": 128,
+				"url": "https://khmps.com/android-chrome-512x512.png",
+				"alt": "KHMPS logo",
+				"linkHref": null,
+				"contentAlignment": "middle"
+			}
+		}
+	},
+	"block-1724896592242": {
+		"type": "Heading",
+		"data": {
+			"props": {
+				"text": "KHMPS",
+				"level": "h1"
+			},
+			"style": {
+				"textAlign": "center",
+				"padding": {
+					"top": 0,
+					"bottom": 0,
+					"right": 0,
+					"left": 0
+				}
+			}
+		}
+	},
+	"block-1724896617129": {
+		"type": "Divider",
+		"data": {
+			"style": {
+				"padding": {
+					"top": 16,
+					"bottom": 0,
+					"right": 20,
+					"left": 20
+				}
+			},
+			"props": {
+				"lineColor": "#ffd5b8",
+				"lineHeight": 2
+			}
+		}
+	},
+	"block-1724896658320": {
+		"type": "Text",
+		"data": {
+			"style": {
+				"fontWeight": "normal",
+				"padding": {
+					"top": 16,
+					"bottom": 16,
+					"right": 24,
+					"left": 24
+				}
+			},
+			"props": {
+				"markdown": true,
+				"text": "Dear {{ name }}\n\nYou are now a user on the Kingdom Hall Maintenance Program Support website (KHMPS)!\n\nBelow is your User Name and Password. You may change your password after you login.\n\nYou can now access your Kingdom Hall's online Maintenance Program Support Dashboard.\n\n**User Name: {{ email }}\nPassword: {{ password }}**"
+			}
+		}
+	},
+	"block-1724896807082": {
+		"type": "Button",
+		"data": {
+			"style": {
+				"fontWeight": "bold",
+				"textAlign": "center",
+				"padding": {
+					"top": 16,
+					"bottom": 16,
+					"right": 24,
+					"left": 24
+				}
+			},
+			"props": {
+				"buttonBackgroundColor": "#f97316",
+				"text": "Login to KHMPS",
+				"url": "https://khmps.com/login"
+			}
+		}
+	},
+	"block-1724896875532": {
+		"type": "Text",
+		"data": {
+			"style": {
+				"color": "#737373",
+				"backgroundColor": "#FFFFFF",
+				"fontSize": 10,
+				"fontWeight": "normal",
+				"textAlign": "center",
+				"padding": {
+					"top": 16,
+					"bottom": 16,
+					"right": 24,
+					"left": 24
+				}
+			},
+			"props": {
+				"text": "Email sent from KHMPS automated email system"
+			}
+		}
+	}
+}
+
