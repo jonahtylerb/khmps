@@ -1,5 +1,19 @@
 <script lang="ts">
+	import type { Task } from '$lib/data';
+
 	const { data } = $props();
+
+	function due(task: Task, i: number) {
+		if (!task.due) return '';
+
+		return task.due?.split('-')?.includes(`${i}`) ? 'bg-#C3D69B' : '';
+	}
+
+	function completed(task: Task, i: number) {
+		if (!task.completed) return '';
+
+		return task.completed?.split('-')?.includes(`${i}`) ? 'X' : '';
+	}
 </script>
 
 <h1 class="text-20px text-#243F60 b-b-1px b-#F79646 mb-15px font-black">
@@ -36,11 +50,8 @@
 				<td>{task.title}</td>
 				<td>{task.assignedTo?.name}</td>
 				{#each [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as i}
-					<td
-						class={'text-center font-bold ' +
-							`${task.due?.split('-')?.includes(`${i}`) ? 'bg-#C3D69B' : ''}`}
-					>
-						{task.completed?.split('-')?.includes(`${i}`) ? 'X' : ''}
+					<td class={'text-center font-bold ' + `${due(task, i)}`}>
+						{completed(task, i)}
 					</td>
 				{/each}
 			</tr>

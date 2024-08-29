@@ -1,46 +1,49 @@
 {
-	"name": "khmps",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --check .",
-		"format": "prettier --write ."
-	},
-	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.2.4",
-		"@sveltejs/kit": "^2.5.24",
-		"@sveltejs/vite-plugin-svelte": "^3.1.2",
-		"@tailwindcss/typography": "^0.5.14",
-		"autoprefixer": "^10.4.20",
-		"flowbite": "^2.5.1",
-		"flowbite-svelte": "^0.46.15",
-		"prettier": "^3.3.3",
-		"prettier-plugin-svelte": "^3.2.6",
-		"prettier-plugin-tailwindcss": "^0.6.6",
-		"svelte": "^5.0.0-next.240",
-		"svelte-check": "^3.8.6",
-		"tailwindcss": "^3.4.10",
-		"typescript": "^5.5.4",
-		"@iconify-json/tabler": "^1.1.120",
-		"vite": "^5.4.2"
-	},
-	"type": "module",
-	"dependencies": {
-		"@fontsource/noto-sans": "^5.0.22",
-		"@fontsource/roboto": "^5.0.14",
-		"@sveltejs/adapter-netlify": "^4.3.3",
-		"@types/dom-view-transitions": "^1.0.5",
-		"@unocss/extractor-svelte": "^0.62.3",
-		"@unocss/reset": "^0.62.3",
-		"@xata.io/cli": "^0.16.2",
-		"@xata.io/client": "^0.30.0",
-		"fuse.js": "^7.0.0",
-		"mailersend": "^2.2.0",
-		"unocss": "^0.62.3"
-	}
+  "name": "khmps",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "^3.2.4",
+    "@sveltejs/kit": "^2.5.25",
+    "@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
+    "@tailwindcss/typography": "^0.5.15",
+    "autoprefixer": "^10.4.20",
+    "flowbite": "^2.5.1",
+    "flowbite-svelte": "^0.46.15",
+    "prettier": "^3.3.3",
+    "prettier-plugin-svelte": "^3.2.6",
+    "prettier-plugin-tailwindcss": "^0.6.6",
+    "svelte": "^5.0.0-next.241",
+    "svelte-check": "^3.8.6",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.4",
+    "@iconify-json/tabler": "^1.1.121",
+    "vite": "^5.4.2"
+  },
+  "type": "module",
+  "dependencies": {
+    "@fontsource/noto-sans": "^5.0.22",
+    "@fontsource/roboto": "^5.0.14",
+    "@sveltejs/adapter-netlify": "^4.3.3",
+    "@types/dom-view-transitions": "^1.0.5",
+    "@unocss/extractor-svelte": "^0.62.3",
+    "@unocss/reset": "^0.62.3",
+    "@xata.io/cli": "^0.16.2",
+    "@xata.io/client": "^0.30.0",
+    "fuse.js": "^7.0.0",
+    "mailersend": "^2.2.0",
+    "unocss": "^0.62.3"
+  },
+  "trustedDependencies": [
+    "svelte-preprocess"
+  ]
 }

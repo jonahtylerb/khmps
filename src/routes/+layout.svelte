@@ -19,6 +19,8 @@
 	import { goto, onNavigate } from '$app/navigation';
 	import Toasts from '$lib/Toasts.svelte';
 
+	const { children } = $props();
+
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
 
@@ -67,7 +69,7 @@
 <main
 	class="pt-30 max-w-screen w-400 print:p-0! flex h-full flex-col items-center px-5 sm:px-10 lg:px-20"
 >
-	<slot></slot>
+	{@render children()}
 </main>
 
 <Toasts></Toasts>

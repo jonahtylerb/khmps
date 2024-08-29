@@ -26,6 +26,8 @@
 	});
 
 	function toggleSkill(id: string) {
+		if (!user.skills) user.skills = [];
+
 		if (user.skills.includes(id)) {
 			user.skills = user.skills.filter((s) => s !== id);
 		} else {
@@ -93,13 +95,12 @@
 			<div animate:flip={{ duration: 100 }}>
 				<Checkbox
 					name={task.id}
-					checked={user.skills.includes(task.id)}
-					onclick={() => toggleSkill(task.id)}>{task.title}</Checkbox
+					checked={user.skills ? user.skills.includes(task.id) : false}
+					onclick={() => toggleSkill(task.id)}
 				>
+					{task.title}
+				</Checkbox>
 			</div>
 		{/each}
-		<Button class="mt-5 w-full" size="sm" color="alternative" href="/kingdom-hall/volunteers"
-			>Add New User</Button
-		>
 	</Dropdown>
 </TableBodyCell>

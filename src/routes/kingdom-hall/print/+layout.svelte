@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { Button, Card, Heading } from 'flowbite-svelte';
+	import { onMount } from 'svelte';
+
+	const { children } = $props();
 
 	const confirm = () => {
 		const user = window.confirm(
@@ -9,6 +12,12 @@
 			window.print();
 		}
 	};
+
+	let path = $state('');
+
+	onMount(() => {
+		path = window.location.pathname.split('/')[3];
+	});
 </script>
 
 <svelte:head>
@@ -25,15 +34,11 @@
 		<Button onclick={confirm} class="w-80% font-bold"
 			>Print<i-tabler-printer class="ml-1"></i-tabler-printer>
 		</Button>
-		<Button
-			color="alternative"
-			href={`/kingdom-hall/${window.location.pathname.split('/')[3]}`}
-			class="w-20%">Back</Button
-		>
+		<Button color="alternative" href={`/kingdom-hall/${path}`} class="w-20%">Back</Button>
 	</div>
 </Card>
 <main class="text-10px max-w-200 w-full">
 	<section class="b-2 b-gray-800/10 print:b-0 bg-white p-10 text-black shadow-lg print:shadow-none">
-		<slot></slot>
+		{@render children()}
 	</section>
 </main>

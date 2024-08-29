@@ -8,7 +8,7 @@
 	{#each data.tasks as task}
 		<Card class="!max-w-full" href={`/kingdom-hall/schedule#${task.id}`}>
 			<Heading class="text-lg font-bold">{task.title}</Heading>
-			<P>{task.assignedTo.name}</P>
+			<P>{task.assignedTo?.name}</P>
 		</Card>
 	{/each}
 </section>

@@ -43,7 +43,7 @@
 				cong: '',
 				skills: [],
 				adminCode: '',
-				kingdomHall: data.user.kingdomHall!.id || ''
+				kingdomHall: data.user.kingdomHall?.id || ''
 			}
 		];
 	}
@@ -66,6 +66,10 @@
 				return false;
 			}
 			let cur = clonedUsers.find((u: (typeof users)[0]) => u.id === user.id);
+
+			if (!user.skills) user.skills = [];
+			if (!cur?.skills) cur.skills = [];
+
 			if (
 				user.name !== cur?.name ||
 				user.email !== cur?.email ||
