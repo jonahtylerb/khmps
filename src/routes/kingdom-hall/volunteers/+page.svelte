@@ -1,10 +1,15 @@
 <script lang="ts">
 	import { flip } from 'svelte/animate';
 	import { beforeNavigate } from '$app/navigation';
+	import { slide } from 'svelte/transition';
 	import {
+		Alert,
 		Table,
+		Badge,
 		TableBody,
 		TableHead,
+		Label,
+		Input,
 		TableHeadCell,
 		Button,
 		Search,
@@ -112,12 +117,12 @@
 
 		let serverReply = await response.json();
 
-		// TODO: Error Handling
 		if (serverReply.error) {
 			console.error(serverReply.error);
 		} else {
 			deletedUsers.length = 0;
 			clonedUsers = JSON.parse(JSON.stringify(users));
+			usersStore.set(users);
 
 			addToast({ message: 'Saved', color: 'green', icon: 'i-tabler-check', timeout: 3000 });
 			saveDisabled = false;
@@ -126,6 +131,8 @@
 
 	beforeNavigate(({ cancel }) => {
 		const dirty = getChanges();
+
+		console.log(dirty.updatedUsers);
 
 		if (dirty.addedUsers.length > 0 || dirty.updatedUsers.length > 0 || deletedUsers.length > 0) {
 			if (
@@ -139,6 +146,20 @@
 			}
 		}
 	});
+
+	let adminOpen = $state(false);
+	let changePasswordOpen = $state(false);
+	let changePasswordUser: (typeof users)[0];
+
+	let password = $state('');
+	let password2 = $state('');
+
+	let passwordsNotMatch = $derived(password !== password2 && password2 !== '');
+
+	function changePassword() {
+		users.find((user) => user.id === changePasswordUser.id)!.adminCode = password;
+		changePasswordOpen = false;
+	}
 </script>
 
 <section class="w-full">
@@ -181,6 +202,74 @@
 		</svelte:fragment>
 	</Modal>
 
+	<Modal title="Create Admin / Update Password" bind:open={adminOpen} dismissable={false}>
+		{#each users as user (user.id)}
+			<button
+				animate:flip
+				onclick={() => {
+					changePasswordUser = user;
+					changePasswordOpen = true;
+				}}
+				class="mt-0! b-y-1 b-gray-400/25 flex w-full items-center justify-between gap-3 p-2 hover:bg-gray-500/20"
+			>
+				<span
+					>{user?.name}
+					{#if user?.adminCode}
+						<Badge color="red">Admin</Badge>
+					{/if}
+				</span>
+				<span>{user?.email}</span>
+			</button>
+		{/each}
+		<svelte:fragment slot="footer">
+			<Button onclick={() => (adminOpen = false)} class="ml-auto px-8">Done</Button>
+		</svelte:fragment>
+	</Modal>
+
+	<Modal
+		title="Set Password"
+		classBody="z-60!"
+		classBackdrop="z-50"
+		bind:open={changePasswordOpen}
+		dismissable={false}
+		classFooter="flex justify-between"
+	>
+		<p>Set an empty password to remove an admin</p>
+		<form class="flex flex-col space-y-6">
+			<Label class="space-y-2">
+				<span>New Password</span>
+				<Input
+					type="password"
+					bind:value={password}
+					name="password"
+					placeholder="Password"
+					required
+				/>
+			</Label>
+			<Label class="space-y-2">
+				<span>Confirm Password</span>
+				<Input
+					type="password"
+					bind:value={password2}
+					name="confirm"
+					placeholder="Password"
+					required
+				/>
+			</Label>
+			{#if passwordsNotMatch}
+				<div transition:slide>
+					<Alert color="red" border>Passwords don't match</Alert>
+				</div>
+			{/if}
+		</form>
+		<svelte:fragment slot="footer">
+			<Button onclick={() => (changePasswordOpen = false)} color="alternative" class="px-8"
+				>Cancel</Button
+			>
+			<Button onclick={changePassword} class="px-8">Done</Button>
+		</svelte:fragment>
+	</Modal>
+
 	<div class="flex-center mt-10 flex flex-col-reverse gap-5 sm:flex-row">
 		<div class="max-w-screen flex w-full gap-3">
 			<Button disabled={saveDisabled} color="primary" class="w-3/4 font-bold" onclick={save}
@@ -202,6 +291,10 @@
 			<Button color="red" class="whitespace-nowrap" onclick={() => (deleteOpen = true)}>
 				Delete User
 				<span class="i-tabler-trash ml-1"></span>
+			</Button>
+			<Button color="alternative" class="whitespace-nowrap" onclick={() => (adminOpen = true)}>
+				Assign Admin
+				<span class="i-tabler-user ml-1"></span>
 			</Button>
 		</div>
 	</div>

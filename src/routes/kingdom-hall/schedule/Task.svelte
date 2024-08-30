@@ -8,9 +8,10 @@
 	interface Props {
 		task: Task;
 		users: User[];
+		openUserModal: () => void;
 	}
 
-	let { task = $bindable() }: Props = $props();
+	let { task = $bindable(), openUserModal }: Props = $props();
 
 	function sort(arr: User[]) {
 		return arr.toSorted((a, b) => (isTrained(a) ? -1 : isTrained(b) ? 1 : 0));
@@ -99,7 +100,7 @@
 				</Checkbox>
 			</div>
 		{/each}
-		<Button class="mt-5 w-full" size="sm" color="alternative" href="/kingdom-hall/volunteers"
+		<Button onclick={openUserModal} class="mt-5 w-full" size="sm" color="alternative"
 			>Add New User</Button
 		>
 	</Dropdown>

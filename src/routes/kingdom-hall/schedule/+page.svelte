@@ -7,7 +7,9 @@
 		TableHeadCell,
 		Button,
 		Search,
-		Modal
+		Modal,
+		Label,
+		Input
 	} from 'flowbite-svelte';
 	import Fuse from 'fuse.js';
 	import { addToast } from '$lib/toastStore';
@@ -36,7 +38,6 @@
 	];
 
 	let tasks = $state($tasksStore);
-	let users = $state($usersStore);
 
 	// Tasks Search
 	const tasksFuse = new Fuse($tasksStore, {
@@ -128,6 +129,7 @@
 		} else {
 			deletedTasks.length = 0;
 			clonedTasks = JSON.parse(JSON.stringify(tasks));
+			tasksStore.set(tasks);
 
 			addToast({ message: 'Saved', color: 'green', icon: 'i-tabler-check', timeout: 3000 });
 			saveDisabled = false;
@@ -149,6 +151,12 @@
 			}
 		}
 	});
+
+	let addUserModal = $state(false);
+
+	function openUserModal() {
+		addUserModal = true;
+	}
 </script>
 
 <section class="w-full">
@@ -168,7 +176,7 @@
 					animate:flip={{ duration: 500 }}
 					class="scroll-mt-100px bg-white dark:border-gray-700 dark:bg-gray-800"
 				>
-					<Task bind:task={tasks[i]} {users}></Task>
+					<Task bind:task={tasks[i]} users={$usersStore} {openUserModal}></Task>
 				</tr>
 			{/each}
 		</TableBody>
@@ -216,3 +224,27 @@
 		</div>
 	</div>
 </section>
+
+<Modal bind:open={addUserModal} size="xs" class="w-full">
+	<h3 slot="header" class="text-2xl font-medium text-gray-900 dark:text-white">Add User</h3>
+	<form class="flex flex-col gap-4" action="?/addUser" method="POST">
+		<Label class="space-y-2">
+			<span>Name</span>
+			<Input type="text" name="name" placeholder="Full Name" required />
+		</Label>
+		<Label class="space-y-2">
+			<span>Email</span>
+			<Input type="email" name="email" placeholder="Email" />
+		</Label>
+		<Label class="space-y-2">
+			<span>Phone</span>
+			<Input type="text" name="phone" placeholder="Phone Number" />
+		</Label>
+		<Label class="space-y-2">
+			<span>Congregation</span>
+			<Input type="text" name="cong" placeholder="Congregation" />
+		</Label>
+		<input type="hidden" name="kingdomHall" value={data.user.kingdomHall?.id} required />
+		<Button type="submit" class="w-full">Save User</Button>
+	</form>
+</Modal>
