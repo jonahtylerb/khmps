@@ -1,0 +1,12 @@
+{
+  "id": "mig_cr8h1ggtng7h1438uo6g",
+  "parentID": "mig_cr8h0ocb5pjp1ioi4hpg",
+  "checksum": "1:41d49e467ccbe7e56765d1b862c057a22f47fe65da18e298bac7e8a97981b1d4",
+  "operations": [
+    {
+      "removeTable": {
+        "table": "congress"
+      }
+    }
+  ]
+}

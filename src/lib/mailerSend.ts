@@ -12,24 +12,68 @@ type Email = {
 	subject: string;
 	html?: string;
 	text?: string;
+	personalization?: {
+		email: string;
+		data: any;
+	};
 };
 
-export function sendEmail({ sender, recipient, cc, name, subject, html = '', text = '' }: Email) {
+export function createEmail({
+	sender,
+	recipient,
+	cc,
+	name,
+	subject,
+	html = '',
+	text = '',
+	personalization
+}: Email): EmailParams {
 	const sentFrom = new Sender(sender, 'KHMPS');
 
 	const recipients = [new Recipient(recipient, name)];
 
-	const emailParams = new EmailParams()
+	let emailParams = new EmailParams()
 		.setFrom(sentFrom)
 		.setTo(recipients)
 		.setSubject(subject)
-		.setHtml(html)
-		.setText(text);
+		.setReplyTo(new Sender('khmpsinfo@gmail.com', 'KHMPS'));
 
 	if (cc) emailParams.setCc(cc.map((c) => new Recipient(c)));
+
+	if (personalization) emailParams.setPersonalization([personalization]);
+
+	emailParams.setHtml(html).setText(text);
+
+	return emailParams;
+}
+
+export function sendEmail({
+	sender,
+	recipient,
+	cc,
+	name,
+	subject,
+	html = '',
+	text = '',
+	personalization
+}: Email) {
+	const emailParams = createEmail({
+		sender,
+		recipient,
+		cc,
+		name,
+		subject,
+		html,
+		text,
+		personalization
+	});
 
 	mailerSend.email
 		.send(emailParams)
 		.then((response) => console.log(response))
 		.catch((error) => console.log(error));
+}
+
+export async function sendEmails(emails: EmailParams[]) {
+	return await mailerSend.email.sendBulk(emails);
 }

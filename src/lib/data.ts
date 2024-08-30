@@ -1,13 +1,5 @@
 import { writable } from 'svelte/store';
 
-export type Task = {
-	id: string;
-	title: string;
-	due: string;
-	completed: string;
-	assignedTo: { id: string; name: string };
-};
-
 export type User = {
 	id: string;
 	name: string;
@@ -17,6 +9,14 @@ export type User = {
 	skills: string[];
 	adminCode: string;
 	kingdomHall?: { name: string; id: string } | string;
+};
+
+export type Task = {
+	id: string;
+	title: string;
+	due: string;
+	completed: string;
+	assignedTo: User;
 };
 
 export const tasksStore = writable<Task[]>([]);

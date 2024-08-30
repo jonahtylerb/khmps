@@ -41,6 +41,8 @@ const tables = [
       { column: "assignedTo", table: "rugs-coasts-urgency" },
       { column: "assignedTo", table: "stump-committee-leaner" },
       { column: "assignedTo", table: "ap" },
+      { column: "assignedTo", table: "lake-forest" },
+      { column: "assignedTo", table: "congress" },
     ],
   },
   {
@@ -230,6 +232,28 @@ const tables = [
       { name: "sort", type: "int" },
     ],
   },
+  {
+    name: "lake-forest",
+    columns: [
+      { name: "title", type: "string" },
+      { name: "assignedTo", type: "link", link: { table: "users" } },
+      { name: "message", type: "string" },
+      { name: "due", type: "string" },
+      { name: "completed", type: "string" },
+      { name: "sort", type: "int" },
+    ],
+  },
+  {
+    name: "congress",
+    columns: [
+      { name: "title", type: "string" },
+      { name: "assignedTo", type: "link", link: { table: "users" } },
+      { name: "message", type: "string" },
+      { name: "due", type: "string" },
+      { name: "completed", type: "string" },
+      { name: "sort", type: "int" },
+    ],
+  },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -296,6 +320,12 @@ export type StumpCommitteeLeanerRecord = StumpCommitteeLeaner & XataRecord;
 export type Ap = InferredTypes["ap"];
 export type ApRecord = Ap & XataRecord;
 
+export type LakeForest = InferredTypes["lake-forest"];
+export type LakeForestRecord = LakeForest & XataRecord;
+
+export type Congress = InferredTypes["congress"];
+export type CongressRecord = Congress & XataRecord;
+
 export type DatabaseSchema = {
   kingdomHalls: KingdomHallsRecord;
   users: UsersRecord;
@@ -316,6 +346,8 @@ export type DatabaseSchema = {
   "rugs-coasts-urgency": RugsCoastsUrgencyRecord;
   "stump-committee-leaner": StumpCommitteeLeanerRecord;
   ap: ApRecord;
+  "lake-forest": LakeForestRecord;
+  congress: CongressRecord;
 };
 
 const DatabaseClient = buildClient();

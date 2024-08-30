@@ -1,0 +1,69 @@
+{
+  "id": "mig_cr8ev2otng7h1438unbg",
+  "parentID": "mig_cr4gi5sfq47auujru6kg",
+  "checksum": "1:4afeb58141494c33da2a7cc9dfadb98ebaacb703c2059d95147d9c5f399745ef",
+  "operations": [
+    {
+      "addTable": {
+        "table": "congress"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "congress"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "congress"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "congress"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "congress"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "string"
+        },
+        "table": "congress"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "sort",
+          "type": "int"
+        },
+        "table": "congress"
+      }
+    }
+  ]
+}

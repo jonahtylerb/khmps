@@ -1,0 +1,69 @@
+{
+  "id": "mig_cr4gi5sfq47auujru6kg",
+  "parentID": "mig_cqn3bkdl09mgl5u62meg",
+  "checksum": "1:dad054d8b926934aac610229fedb7142dc39c72b3ce685f418045feafc135a67",
+  "operations": [
+    {
+      "addTable": {
+        "table": "lake-forest"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "lake-forest"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "assignedTo",
+          "type": "link",
+          "link": {
+            "table": "users"
+          }
+        },
+        "table": "lake-forest"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "message",
+          "type": "string"
+        },
+        "table": "lake-forest"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "due",
+          "type": "string"
+        },
+        "table": "lake-forest"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "completed",
+          "type": "string"
+        },
+        "table": "lake-forest"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "sort",
+          "type": "int"
+        },
+        "table": "lake-forest"
+      }
+    }
+  ]
+}
