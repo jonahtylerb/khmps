@@ -14,7 +14,7 @@
 	<p class="flex items-center font-bold">Welcome to the new KHMPS!</p>
 	<p class="text-sm">
 		You can still use the old one for a time <a
-			href="https://old.khmps.com"
+			href="https://khmps.netlify.app"
 			class="underline decoration-orange-500 decoration-2">here</a
 		>
 	</p>
