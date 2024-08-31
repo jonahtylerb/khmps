@@ -18,7 +18,7 @@
 	async function complete() {
 		const res = await fetch('/complete', {
 			method: 'POST',
-			body: JSON.stringify({ id: data.task.id, hall: data.hall }),
+			body: JSON.stringify({ task: data.task, hall: data.hall }),
 			headers: {
 				'Content-Type': 'application/json'
 			}

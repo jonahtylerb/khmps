@@ -7,8 +7,6 @@ import type { Task } from '$lib/data.js';
 export async function POST({ request }) {
 	const { hall, overdueTasks, dueTasks } = await request.json();
 
-	console.log(hall);
-
 	const months = [
 		'January',
 		'February',
