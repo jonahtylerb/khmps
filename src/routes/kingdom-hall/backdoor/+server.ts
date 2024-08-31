@@ -1,11 +1,11 @@
-import { createEmail, sendEmail, sendEmails } from '$lib/mailerSend';
+import { createEmail, sendEmails } from '$lib/mailerSend';
 
 import dueEmail from '$lib/emails/task.html?raw';
 import overdueEmail from '$lib/emails/overdue.html?raw';
 import type { Task } from '$lib/data.js';
 
 export async function POST({ request }) {
-	const { hall, overdueTasks, dueTasks } = await request.json();
+	const { hall, overdueTasks, dueTasks, admins } = await request.json();
 
 	const months = [
 		'January',
@@ -28,6 +28,7 @@ export async function POST({ request }) {
 			subject: 'Overdue Task For Kingdom Hall Maintenance',
 			name: task.assignedTo?.name,
 			recipient: task.assignedTo?.email,
+			cc: admins,
 			text: '',
 			personalization: {
 				email: task.assignedTo?.email,
@@ -49,6 +50,7 @@ export async function POST({ request }) {
 			subject: 'Task Due For Kingdom Hall Maintenance',
 			name: task.assignedTo?.name,
 			recipient: task.assignedTo?.email,
+			cc: admins,
 			text: '',
 			personalization: {
 				email: task.assignedTo?.email,
@@ -64,7 +66,9 @@ export async function POST({ request }) {
 		});
 	});
 
-	await sendEmails([...dueEmails, ...overdueEmails]);
+	const res = await sendEmails([...dueEmails, ...overdueEmails]);
+
+	console.log(res);
 
 	return new Response('OK');
 }

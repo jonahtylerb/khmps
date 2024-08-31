@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { Task } from '$lib/data';
+	import type { Task, User } from '$lib/data';
 
 	const { data } = $props();
+
+	const admins = data.users
+		.filter((user: User) => !!user.adminCode)
+		.map((user: User) => user.email);
 
 	const filterTasks = (tasks: Task[], hall: any) => {
 		let dueTasks: Task[] = [];
@@ -74,7 +78,8 @@
 			body: JSON.stringify({
 				hall: tasks.hall,
 				overdueTasks: tasks.overdueTasks,
-				dueTasks: tasks.dueTasks
+				dueTasks: tasks.dueTasks,
+				admins: admins
 			})
 		};
 		const response = await fetch('/kingdom-hall/backdoor', options);
