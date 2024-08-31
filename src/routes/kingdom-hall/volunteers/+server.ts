@@ -1,8 +1,10 @@
 import { json } from '@sveltejs/kit';
 import { xata } from '$lib/xata.js';
+import { createEmail, sendEmails } from '$lib/mailerSend.js';
+import html from '$lib/emails/newUser.html?raw';
 
 export async function POST({ request }) {
-	const { addedUsers, updatedUsers, deletedUsers } = await request.json();
+	const { addedUsers, updatedUsers, deletedUsers, newAdmins } = await request.json();
 	let operations = [];
 
 	if (updatedUsers.length) {
@@ -52,6 +54,28 @@ export async function POST({ request }) {
 				}
 			}))
 		);
+	}
+
+	if (newAdmins?.length > 0) {
+		const emails = newAdmins.map((user: (typeof newAdmins)[0]) => {
+			return createEmail({
+				name: user.name,
+				sender: 'info@khmps.com',
+				subject: 'Welcome to KHMPS!',
+				recipient: user.email,
+				personalization: {
+					email: user.email,
+					data: {
+						name: user.name,
+						email: user.email,
+						password: user.adminCode
+					}
+				},
+				html: html
+			});
+		});
+
+		sendEmails(emails);
 	}
 
 	const response = await xata.transactions.run(operations);

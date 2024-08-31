@@ -64,16 +64,22 @@
 	// Unsaved Changes
 	function getChanges() {
 		const addedUsers: typeof users = [];
+		const newAdmins: typeof users = [];
 		const updatedUsers = users.filter((user: (typeof users)[0]) => {
 			if (user.id?.slice(0, 2) === 'u-') {
 				user.id = user.id.split('-')[1];
 				addedUsers.push(user);
+				if (user.adminCode) newAdmins.push(user);
 				return false;
 			}
 			let cur = clonedUsers.find((u: (typeof users)[0]) => u.id === user.id);
 
 			if (!user.skills) user.skills = [];
 			if (!cur?.skills) cur.skills = [];
+
+			if (user.adminCode !== cur?.adminCode && !cur?.adminCode) {
+				newAdmins.push(user);
+			}
 
 			if (
 				user.name !== cur?.name ||
@@ -86,7 +92,7 @@
 				return true;
 			}
 		});
-		return { addedUsers, updatedUsers };
+		return { addedUsers, updatedUsers, newAdmins };
 	}
 
 	// Saving Users
@@ -95,7 +101,7 @@
 		if (saveDisabled) return;
 		saveDisabled = true;
 
-		const { addedUsers, updatedUsers } = getChanges();
+		const { addedUsers, updatedUsers, newAdmins } = getChanges();
 
 		if (!addedUsers.length && !updatedUsers.length && !deletedUsers.length) {
 			addToast({ message: 'Saved', color: 'green', icon: 'i-tabler-check', timeout: 3000 });
@@ -108,7 +114,8 @@
 			body: JSON.stringify({
 				updatedUsers: updatedUsers,
 				deletedUsers: deletedUsers,
-				addedUsers: addedUsers
+				addedUsers: addedUsers,
+				newAdmins: newAdmins
 			}),
 			headers: {
 				'content-type': 'application/json'
@@ -263,8 +270,14 @@
 			{/if}
 		</form>
 		<svelte:fragment slot="footer">
-			<Button onclick={() => (changePasswordOpen = false)} color="alternative" class="px-8"
-				>Cancel</Button
+			<Button
+				onclick={() => {
+					changePasswordOpen = false;
+					password = '';
+					password2 = '';
+				}}
+				color="alternative"
+				class="px-8">Cancel</Button
 			>
 			<Button onclick={changePassword} class="px-8">Done</Button>
 		</svelte:fragment>
@@ -283,7 +296,7 @@
 				<span class="i-tabler-printer ml-1"></span>
 			</Button>
 		</div>
-		<div class="max-w-screen children:w-full lt-sm:w-full flex gap-3">
+		<div class="max-w-screen children:w-full lt-sm:w-full lt-sm:flex-wrap flex gap-3">
 			<Button color="dark" class="whitespace-nowrap" onclick={addUser}
 				>Add User
 				<span class="i-tabler-plus ml-1"></span>

@@ -12,7 +12,7 @@
 
 body,
 html {
-	@apply flex min-h-screen w-full flex-col items-center justify-between dark:bg-gray-900;
+	@apply flex min-h-screen w-full flex-col items-center justify-between overflow-x-hidden dark:bg-gray-900;
 	scroll-behavior: smooth;
 }
 

@@ -45,7 +45,7 @@
 <Navbar
 	fluid={true}
 	style="view-transition-name:nav;"
-	class="fixed left-0 top-0 z-10 w-full shadow-lg print:hidden"
+	class="h-20! fixed left-0 top-0 z-20 w-full shadow-lg print:hidden"
 >
 	<NavBrand href="/">
 		<img class="m-3 h-8" src="/android-chrome-512x512.png" alt="logo" />

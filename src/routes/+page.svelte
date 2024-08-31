@@ -1,8 +1,26 @@
 <script>
-	import { Button, Heading, P } from 'flowbite-svelte';
+	import { Banner, Button, Heading, P } from 'flowbite-svelte';
+	import { slide } from 'svelte/transition';
 </script>
 
-<main class="max-w-90ch space-y-5">
+<Banner
+	id="default-banner"
+	transition={slide}
+	classDiv="!bg-gray-500/50 top-20"
+	classInner="flex-col"
+	position="absolute"
+	dismissable={false}
+>
+	<p class="flex items-center font-bold">Welcome to the new KHMPS!</p>
+	<p class="text-sm">
+		You can still use the old one for a time <a
+			href="https://old.khmps.com"
+			class="underline decoration-orange-500 decoration-2">here</a
+		>
+	</p>
+</Banner>
+
+<main class="max-w-90ch mt-15 space-y-5">
 	<Heading tag="h1" class="lt-sm:text-4xl mb-10"
 		>Kingdom Hall <span class="decoration-blue-5 decoration-5 underline">Maintenance Program</span> Support</Heading
 	>
