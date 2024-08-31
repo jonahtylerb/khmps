@@ -139,8 +139,6 @@
 	beforeNavigate(({ cancel }) => {
 		const dirty = getChanges();
 
-		console.log(dirty.updatedUsers);
-
 		if (dirty.addedUsers.length > 0 || dirty.updatedUsers.length > 0 || deletedUsers.length > 0) {
 			if (
 				!confirm(
