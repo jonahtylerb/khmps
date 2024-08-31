@@ -7,6 +7,8 @@ import type { Task } from '$lib/data.js';
 export async function POST({ request }) {
 	const { hall, overdueTasks, dueTasks } = await request.json();
 
+	console.log(hall);
+
 	const months = [
 		'January',
 		'February',
@@ -35,7 +37,8 @@ export async function POST({ request }) {
 					name: task.assignedTo?.name,
 					task: task.title,
 					due: months[+task.due! - 1],
-					id: task.id
+					id: task.id,
+					hall: hall
 				}
 			},
 			html: overdueEmail
@@ -55,7 +58,8 @@ export async function POST({ request }) {
 					name: task.assignedTo?.name,
 					task: task.title,
 					due: months[+task.due! - 1],
-					id: task.id
+					id: task.id,
+					hall: hall
 				}
 			},
 			html: dueEmail

@@ -106,7 +106,7 @@
 			"props": {
 				"buttonBackgroundColor": "#f97316",
 				"text": "Mark Task Completed",
-				"url": "https://khmps.com/complete/{{id}}"
+				"url": "https://khmps.com/complete?id={{id}}&hall={{hall}}"
 			}
 		}
 	},
@@ -132,4 +132,3 @@
 		}
 	}
 }
-
