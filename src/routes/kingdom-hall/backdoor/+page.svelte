@@ -4,10 +4,6 @@
 
 	const { data } = $props();
 
-	const admins = data.users
-		.filter((user: User) => !!user.adminCode)
-		.map((user: User) => user.email);
-
 	const filterTasks = (tasks: Task[], hall: any) => {
 		let dueTasks: Task[] = [];
 		let overdueTasks: Task[] = [];
@@ -62,10 +58,20 @@
 		console.log(hall.name + ' Overdue Tasks: ' + overdueTasks.length);
 		console.log(overdueTasks);
 
+		const admins = data.users
+			.filter((user: User) => {
+				if (typeof user.kingdomHall !== 'string') {
+					return !!user.adminCode && user.kingdomHall!.id === hall.id;
+				}
+				return false;
+			})
+			.map((user: User) => user.email);
+
 		return {
 			hall: hall.name,
 			dueTasks: dueTasks,
-			overdueTasks: overdueTasks
+			overdueTasks: overdueTasks,
+			admins: admins
 		};
 	};
 
@@ -79,7 +85,7 @@
 				hall: tasks.hall,
 				overdueTasks: tasks.overdueTasks,
 				dueTasks: tasks.dueTasks,
-				admins: admins
+				admins: tasks.admins
 			})
 		};
 		const response = await fetch('/kingdom-hall/backdoor', options);
