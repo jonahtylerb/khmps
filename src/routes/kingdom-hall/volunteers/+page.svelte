@@ -48,6 +48,7 @@
 				cong: '',
 				skills: [],
 				password: '',
+				tempPassword: '',
 				kingdomHall: data.user.kingdomHall?.id || ''
 			}
 		];
@@ -77,7 +78,7 @@
 			if (!user.skills) user.skills = [];
 			if (!cur?.skills) cur.skills = [];
 
-			if (user.tempPassword && !cur?.password) {
+			if (user?.tempPassword && !cur?.password) {
 				newAdmins.push(user);
 			}
 
@@ -128,6 +129,12 @@
 			console.error(serverReply.error);
 		} else {
 			deletedUsers.length = 0;
+			users = users.map((user) => {
+				if (user.tempPassword) {
+					user.tempPassword = '';
+				}
+				return user;
+			});
 			clonedUsers = JSON.parse(JSON.stringify(users));
 			usersStore.set(users);
 

@@ -2,12 +2,16 @@ import { json } from '@sveltejs/kit';
 import { xata } from '$lib/xata.js';
 import { createEmail, sendEmails } from '$lib/mailerSend.js';
 import html from '$lib/emails/newUser.html?raw';
+import bcrypt from 'bcryptjs';
 
 export async function POST({ request }) {
 	const { addedUsers, updatedUsers, deletedUsers, newAdmins } = await request.json();
 	let operations = [];
 
-	// FIX: later!
+	function hash(password: string) {
+		return bcrypt.hashSync(password, 10);
+	}
+
 	if (updatedUsers.length) {
 		operations.push(
 			...updatedUsers.map((user: (typeof updatedUsers)[0]) => ({
@@ -20,7 +24,7 @@ export async function POST({ request }) {
 						phone: user.phone,
 						cong: user.cong,
 						skills: user.skills,
-						adminCode: user.adminCode
+						password: user?.tempPassword ? hash(user.tempPassword) : user.password
 					}
 				}
 			}))
@@ -49,7 +53,7 @@ export async function POST({ request }) {
 						phone: user.phone,
 						cong: user.cong,
 						skills: user.skills,
-						adminCode: user.adminCode,
+						password: user?.tempPassword ? hash(user.tempPassword) : user.password,
 						kingdomHall: user.kingdomHall
 					}
 				}
@@ -69,7 +73,7 @@ export async function POST({ request }) {
 					data: {
 						name: user.name,
 						email: user.email,
-						password: user.adminCode
+						password: user.tempPassword
 					}
 				},
 				html: html
