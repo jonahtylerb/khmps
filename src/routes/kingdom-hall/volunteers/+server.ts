@@ -7,6 +7,7 @@ export async function POST({ request }) {
 	const { addedUsers, updatedUsers, deletedUsers, newAdmins } = await request.json();
 	let operations = [];
 
+	// FIX: later!
 	if (updatedUsers.length) {
 		operations.push(
 			...updatedUsers.map((user: (typeof updatedUsers)[0]) => ({

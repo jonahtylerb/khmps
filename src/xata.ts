@@ -22,6 +22,7 @@ const tables = [
       { name: "cong", type: "string" },
       { name: "phone", type: "string" },
       { name: "skills", type: "multiple" },
+      { name: "password", type: "text" },
     ],
     revLinks: [
       { column: "assignedTo", table: "august" },

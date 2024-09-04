@@ -47,7 +47,7 @@
 				phone: '',
 				cong: '',
 				skills: [],
-				adminCode: '',
+				password: '',
 				kingdomHall: data.user.kingdomHall?.id || ''
 			}
 		];
@@ -69,7 +69,7 @@
 			if (user.id?.slice(0, 2) === 'u-') {
 				user.id = user.id.split('-')[1];
 				addedUsers.push(user);
-				if (user.adminCode) newAdmins.push(user);
+				if (user.password) newAdmins.push(user);
 				return false;
 			}
 			let cur = clonedUsers.find((u: (typeof users)[0]) => u.id === user.id);
@@ -77,7 +77,7 @@
 			if (!user.skills) user.skills = [];
 			if (!cur?.skills) cur.skills = [];
 
-			if (user.adminCode !== cur?.adminCode && !cur?.adminCode) {
+			if (user.tempPassword && !cur?.password) {
 				newAdmins.push(user);
 			}
 
@@ -85,7 +85,7 @@
 				user.name !== cur?.name ||
 				user.email !== cur?.email ||
 				user.phone !== cur?.phone ||
-				user.adminCode !== cur?.adminCode ||
+				user.tempPassword ||
 				user.cong !== cur?.cong ||
 				user.skills.toSorted().join('') !== cur?.skills.toSorted().join('')
 			) {
@@ -162,7 +162,7 @@
 	let passwordsNotMatch = $derived(password !== password2 && password2 !== '');
 
 	function changePassword() {
-		users.find((user) => user.id === changePasswordUser.id)!.adminCode = password;
+		users.find((user) => user.id === changePasswordUser.id)!.tempPassword = password;
 		changePasswordOpen = false;
 	}
 </script>
@@ -219,7 +219,7 @@
 			>
 				<span
 					>{user?.name}
-					{#if user?.adminCode}
+					{#if user?.password}
 						<Badge color="red">Admin</Badge>
 					{/if}
 				</span>

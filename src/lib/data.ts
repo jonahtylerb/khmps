@@ -7,7 +7,8 @@ export type User = {
 	phone: string;
 	cong: string;
 	skills: string[];
-	adminCode: string;
+	password: string;
+	tempPassword?: string;
 	kingdomHall?: { name: string; id: string } | string;
 };
 

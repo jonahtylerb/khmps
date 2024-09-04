@@ -61,7 +61,7 @@
 		const admins = data.users
 			.filter((user: User) => {
 				if (typeof user.kingdomHall !== 'string') {
-					return !!user.adminCode && user.kingdomHall!.id === hall.id;
+					return !!user.password && user.kingdomHall!.id === hall.id;
 				}
 				return false;
 			})

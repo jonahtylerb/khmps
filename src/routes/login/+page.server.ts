@@ -1,5 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import { xata } from '$lib/xata';
+import bcrypt from 'bcryptjs';
 
 export const load = async ({ cookies }) => {
 	const id = cookies.get('session');
@@ -31,7 +32,9 @@ export const actions = {
 			return fail(400, { email, missing: true });
 		}
 
-		if (user.adminCode === `${password.toString()}`) {
+		const matchHash = await bcrypt.compare(password.toString(), user.password);
+
+		if (matchHash) {
 			cookies.set('session', user.id, { path: '/' });
 			redirect(303, '/kingdom-hall');
 		} else {
